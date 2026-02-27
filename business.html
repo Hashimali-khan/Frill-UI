@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Plan – Frill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #3B1F5E;
+      --purple-light: #5a3087;
+      --magenta: #C2185B;
+      --magenta-light: #e91e8c;
+      --cream: #FAF7FF;
+      --white: #ffffff;
+      --text-muted: #a78bcb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--purple); }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(59,31,94,0.97); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--white); }
+    .nav-logo span { color: var(--magenta); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--magenta-light); }
+
+    .page-hero {
+      background: var(--purple); padding: 10rem 4rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: -150px; left: -150px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(194,24,91,0.2) 0%, transparent 70%);
+    }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .page-eyebrow { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 1rem; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); color: var(--white); font-weight: 900; line-height: 1; }
+    .page-subtitle { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin-top: 1.5rem; }
+
+    .content-section { padding: 6rem 4rem; }
+    .content-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.8rem); color: var(--purple); margin-bottom: 1.5rem; }
+    p { color: #4a3060; line-height: 1.85; font-size: 1rem; margin-bottom: 1rem; }
+
+    /* BUSINESS MODEL */
+    .model-card {
+      background: var(--purple); color: var(--white);
+      border-radius: 20px; padding: 2.5rem; margin-top: 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .model-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.5rem; }
+    .model-heading { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .model-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 0; }
+
+    /* REVENUE TABLE */
+    .rev-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+    .rev-table th { background: var(--purple); color: var(--white); padding: 1rem 1.25rem; text-align: left; font-size: 0.85rem; }
+    .rev-table td { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(59,31,94,0.08); font-size: 0.9rem; }
+    .rev-table tr:nth-child(even) td { background: var(--white); }
+    .rev-bar { height: 8px; border-radius: 4px; background: var(--magenta); display: inline-block; }
+
+    /* SMART GOAL */
+    .smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .smart-card { border-radius: 16px; padding: 2rem; border-top: 4px solid; }
+    .smart-card:nth-child(1) { border-color: var(--magenta); background: var(--white); }
+    .smart-card:nth-child(2) { border-color: #7c3aed; background: var(--white); }
+    .smart-card:nth-child(3) { border-color: #059669; background: var(--white); }
+    .smart-card:nth-child(4) { border-color: #d97706; background: var(--white); }
+    .smart-card:nth-child(5) { border-color: #2563eb; background: var(--white); }
+    .smart-letter { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--purple); }
+    .smart-word { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
+    .smart-content { font-size: 0.9rem; line-height: 1.7; color: #4a3060; }
+
+    /* HOSTING */
+    .host-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .host-card { background: var(--white); border-radius: 16px; padding: 2rem; }
+    .host-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .host-title { font-weight: 600; color: var(--purple); margin-bottom: 0.5rem; }
+    .host-val { color: var(--magenta); font-weight: 500; font-size: 0.9rem; }
+    .host-text { color: #6b5080; font-size: 0.875rem; line-height: 1.6; margin-top: 0.25rem; margin-bottom: 0; }
+
+    /* TECH STACK */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .tech-pill { background: var(--purple); color: var(--white); border-radius: 12px; padding: 1.25rem; }
+    .tech-layer { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.25rem; }
+    .tech-val { font-size: 0.9rem; font-weight: 500; }
+
+    footer { background: var(--purple); color: var(--text-muted); text-align: center; padding: 3rem 4rem; }
+    footer .logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); font-weight: 900; }
+    footer .logo span { color: var(--magenta); }
+    footer p { margin-top: 1rem; font-size: 0.85rem; }
+    footer nav { margin-top: 1.5rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+    footer nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    footer nav a:hover { color: var(--magenta); }
+
+    @media (max-width: 768px) {
+      .model-card { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .page-hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">fr<span>i</span>ll</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="business.html" class="active">Business Plan</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Business Strategy</div>
+    <h1 class="page-title">The Frill<br>Business Plan</h1>
+    <p class="page-subtitle">A vertically integrated e-commerce model built for Pakistan's growing youth-driven fashion market.</p>
+  </div>
+</div>
+
+<!-- BUSINESS MODEL -->
+<section class="content-section" style="background:var(--white);">
+  <div class="content-inner">
+    <div class="section-label">Business Model</div>
+    <h2 class="section-title">E-Tailer: Vertically Integrated</h2>
+    <p>Frill designs, manufactures, and sells its own custom printed products directly to end consumers — owning the entire supply chain from digital design tool through physical production to last-mile delivery.</p>
+    <div class="model-card">
+      <div>
+        <div class="model-label">Primary Model</div>
+        <div class="model-heading">B2C – Business to Consumer</div>
+        <p class="model-text">Frill manufactures and ships custom printed clothing directly to individual end consumers through its online platform at frill.pk. Full quality control, 40–55% gross margins on individual orders.</p>
+      </div>
+      <div>
+        <div class="model-label">Secondary Model</div>
+        <div class="model-heading">B2B – Corporate & Bulk Orders</div>
+        <p class="model-text">Bulk corporate orders for uniforms, event merchandise, and brand merch for SMEs. Tiered discounts for 20+ pieces with dedicated account manager and invoiced payment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE MODEL -->
+<section class="content-section" style="background:var(--cream);">
+  <div class="content-inner">
+    <div class="section-label">Revenue Streams</div>
+    <h2 class="section-title">How Frill Makes Money</h2>
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Revenue Stream</th>
+          <th>Mechanism</th>
+          <th>Est. Share</th>
+          <th>Contribution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Direct Product Sales</strong></td>
+          <td>Customer pays per garment: base cost + print complexity surcharge + delivery fee</td>
+          <td>65%</td>
+          <td><span class="rev-bar" style="width:130px;"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Bulk / Corporate Orders</strong></td>
+          <td>Tiered discounts for 20+ pieces; dedicated account manager; invoiced payment</td>
+          <td>20%</td>
+          <td><span class="rev-bar" style="width:40px;"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Premium Design Templates</strong></td>
+          <td>Curated artist-designed templates sold at PKR 199–499 per licence</td>
+          <td>8%</td>
+          <td><span class="rev-bar" style="width:16px;"></span></td>
+        </tr>
+        <tr>
+          <td><strong>White-Label Fulfilment</strong></td>
+          <td>Third-party brands send designs; Frill prints & ships under their branding (B2B2C)</td>
+          <td>7%</td>
+          <td><span class="rev-bar" style="width:14px;"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SMART GOAL -->
+<section class="content-section" style="background:var(--white);">
+  <div class="content-inner">
+    <div class="section-label">Marketing Goal</div>
+    <h2 class="section-title">SMART Goal Framework</h2>
+    <p>Acquire 5,000 paying customers and achieve PKR 7.5M in total revenue within the first six months post-launch through targeted digital advertising on Instagram, TikTok, and Google Ads.</p>
+    <div class="smart-grid">
+      <div class="smart-card">
+        <div class="smart-letter">S</div>
+        <span class="smart-word">Specific</span>
+        <div class="smart-content">Acquire paying customers in Lahore, Karachi & Islamabad via Instagram, TikTok & Google Ads targeting ages 16–35.</div>
+      </div>
+      <div class="smart-card">
+        <div class="smart-letter">M</div>
+        <span class="smart-word">Measurable</span>
+        <div class="smart-content">5,000 customers · PKR 7.5M revenue · 4% conversion rate · CAC &lt; PKR 600 · ROAS &gt; 4x. Tracked weekly via GA4 & ad dashboards.</div>
+      </div>
+      <div class="smart-card">
+        <div class="smart-letter">A</div>
+        <span class="smart-word">Achievable</span>
+        <div class="smart-content">PKR 300,000/month ad budget · 2-person marketing team · design studio live · in-house production at 200 units/day capacity.</div>
+      </div>
+      <div class="smart-card">
+        <div class="smart-letter">R</div>
+        <span class="smart-word">Relevant</span>
+        <div class="smart-content">Customer growth directly drives revenue, validates product-market fit, and builds email/social retargeting audiences for lower future CAC.</div>
+      </div>
+      <div class="smart-card">
+        <div class="smart-letter">T</div>
+        <span class="smart-word">Time-Bound</span>
+        <div class="smart-content">6 months post-launch: February to August 2026. Monthly milestones reviewed at each month-end.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAIN & HOSTING -->
+<section class="content-section" style="background:var(--cream);">
+  <div class="content-inner">
+    <div class="section-label">Domain & Hosting</div>
+    <h2 class="section-title">Technical Infrastructure</h2>
+    <p>Frill uses a modern cloud-native stack designed for reliability, speed, and scalability across Pakistan.</p>
+
+    <div style="margin-top:2rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1rem;color:var(--purple);">Domain Strategy</h3>
+      <div class="host-grid">
+        <div class="host-card">
+          <div class="host-icon">🌐</div>
+          <div class="host-title">Primary Domain</div>
+          <div class="host-val">www.frill.pk</div>
+          <p class="host-text">Registered via PKNIC (Pakistan Network Information Centre) — PKR 2,500/year</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">🔗</div>
+          <div class="host-title">Alternative Domain</div>
+          <div class="host-val">www.frill.com.pk</div>
+          <p class="host-text">Backup domain — PKR 1,800/year for .com.pk</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">🔒</div>
+          <div class="host-title">SSL Certificate</div>
+          <div class="host-val">Sectigo Wildcard SSL</div>
+          <p class="host-text">Secures frill.pk and all subdomains: app, api, studio</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">⚡</div>
+          <div class="host-title">CDN / Security</div>
+          <div class="host-val">Cloudflare</div>
+          <p class="host-text">DDoS protection, global caching, and fast DNS resolution</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1rem;color:var(--purple);">Hosting Architecture</h3>
+      <div class="host-grid">
+        <div class="host-card">
+          <div class="host-icon">🖥️</div>
+          <div class="host-title">Web App (Phase 1)</div>
+          <div class="host-val">DigitalOcean Droplet — $48/mo</div>
+          <p class="host-text">4 vCPU, 8 GB RAM, 160 GB SSD — handles storefront + design studio</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">☁️</div>
+          <div class="host-title">Web App (Phase 2)</div>
+          <div class="host-val">AWS EC2 Auto Scaling — $150–300/mo</div>
+          <p class="host-text">t3.medium instances, load-balanced, scales with traffic spikes</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">🗄️</div>
+          <div class="host-title">Database</div>
+          <div class="host-val">AWS RDS PostgreSQL — $60/mo</div>
+          <p class="host-text">db.t3.medium, Multi-AZ for reliability, daily automated backups</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">📁</div>
+          <div class="host-title">File Storage</div>
+          <div class="host-val">AWS S3 + CloudFront — $20–40/mo</div>
+          <p class="host-text">Customer design files, product renders, processed artwork</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">📧</div>
+          <div class="host-title">Email / SMS</div>
+          <div class="host-val">SendGrid + Twilio — $30/mo</div>
+          <p class="host-text">Transactional emails, SMS OTP & delivery alerts</p>
+        </div>
+        <div class="host-card">
+          <div class="host-icon">💳</div>
+          <div class="host-title">Payment Gateway</div>
+          <div class="host-val">JazzCash + EasyPaisa + HBL</div>
+          <p class="host-text">Local payment APIs integrated; 2–3% per transaction</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1rem;color:var(--purple);">Technology Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-pill"><div class="tech-layer">Frontend</div><div class="tech-val">React.js + TypeScript + Tailwind CSS + Fabric.js</div></div>
+        <div class="tech-pill"><div class="tech-layer">Mobile App</div><div class="tech-val">React Native (iOS & Android) — Phase 2</div></div>
+        <div class="tech-pill"><div class="tech-layer">Backend API</div><div class="tech-val">Node.js + Express.js REST API + GraphQL</div></div>
+        <div class="tech-pill"><div class="tech-layer">Databases</div><div class="tech-val">PostgreSQL + Redis + AWS S3</div></div>
+        <div class="tech-pill"><div class="tech-layer">Design Studio</div><div class="tech-val">HTML5 Canvas via Fabric.js</div></div>
+        <div class="tech-pill"><div class="tech-layer">Analytics</div><div class="tech-val">Google Analytics 4 + Mixpanel</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">fr<span>i</span>ll</div>
+  <p>www.frill.pk &nbsp;|&nbsp; Islamabad, Pakistan</p>
+  <p style="margin-top:0.5rem;">Hashim Ali Khan &nbsp;|&nbsp; FA24-BSE-027</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="business.html">Business Plan</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <p style="margin-top:2rem;font-size:0.75rem;opacity:0.5;">© 2026 Frill. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

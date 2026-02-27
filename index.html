@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frill – Wear Your Imagination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #3B1F5E;
+      --purple-light: #5a3087;
+      --magenta: #C2185B;
+      --magenta-light: #e91e8c;
+      --cream: #FAF7FF;
+      --white: #ffffff;
+      --text-muted: #a78bcb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--purple); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(59,31,94,0.97);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--white); letter-spacing: -1px;
+    }
+    .nav-logo span { color: var(--magenta); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--magenta-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 8rem 4rem 4rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194,24,91,0.25) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(90,48,135,0.4) 0%, transparent 70%);
+    }
+    .hero-inner { text-align: center; position: relative; z-index: 2; max-width: 900px; }
+    .hero-eyebrow {
+      font-size: 0.8rem; letter-spacing: 0.3em; font-weight: 500;
+      color: var(--magenta); text-transform: uppercase; margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 900; line-height: 0.9;
+      color: var(--white);
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    .hero-title span { color: var(--magenta); }
+    .hero-tagline {
+      font-size: 1rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--magenta); margin-top: 1rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-desc {
+      color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;
+      max-width: 600px; margin: 2rem auto;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+    .hero-buttons {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+    .btn-primary {
+      background: var(--magenta); color: var(--white);
+      padding: 0.9rem 2.5rem; border-radius: 50px;
+      text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--magenta-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+      padding: 0.9rem 2.5rem; border-radius: 50px;
+      text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: border-color 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--magenta); transform: translateY(-2px); }
+
+    /* FEATURES STRIP */
+    .strip {
+      background: var(--magenta);
+      padding: 1rem 4rem;
+      display: flex; gap: 3rem; justify-content: center;
+      flex-wrap: wrap; overflow: hidden;
+    }
+    .strip-item { color: var(--white); font-size: 0.85rem; letter-spacing: 0.1em; font-weight: 500; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 4rem; }
+    .section-label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--magenta); font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700;
+      color: var(--purple); line-height: 1.15;
+    }
+
+    /* PRODUCTS */
+    .products-section { background: var(--white); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: 16px; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(59,31,94,0.12); }
+    .product-img {
+      height: 200px; background: linear-gradient(135deg, var(--purple), var(--magenta));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+    .product-info { padding: 1.25rem; }
+    .product-name { font-weight: 600; font-size: 1rem; color: var(--purple); }
+    .product-price { color: var(--magenta); font-weight: 700; margin-top: 0.25rem; }
+
+    /* WHY US */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .why-card {
+      background: var(--purple); color: var(--white);
+      border-radius: 16px; padding: 2rem;
+      transition: transform 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); }
+    .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .why-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .why-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--purple); color: var(--text-muted);
+      text-align: center; padding: 3rem 4rem;
+    }
+    footer .logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); font-weight: 900; }
+    footer .logo span { color: var(--magenta); }
+    footer p { margin-top: 1rem; font-size: 0.85rem; }
+    footer nav { margin-top: 1.5rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+    footer nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    footer nav a:hover { color: var(--magenta); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">fr<span>i</span>ll</div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="business.html">Business Plan</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Pakistan's #1 Custom Clothing Platform</div>
+    <h1 class="hero-title">fr<span>i</span>ll</h1>
+    <div class="hero-tagline">Wear Your Imagination</div>
+    <p class="hero-desc">Design and order fully customized printed T-shirts, hoodies, polo shirts, and tote bags — entirely online. Your vision, our craft.</p>
+    <div class="hero-buttons">
+      <a href="about.html" class="btn-primary">Explore Frill</a>
+      <a href="contact.html" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <span class="strip-item">✦ DTG Printing Technology</span>
+  <span class="strip-item">✦ No Minimum Order</span>
+  <span class="strip-item">✦ 3–5 Day Delivery</span>
+  <span class="strip-item">✦ JazzCash &amp; EasyPaisa</span>
+  <span class="strip-item">✦ Cash on Delivery</span>
+</div>
+
+<section class="section products-section">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">Our Products</div>
+    <h2 class="section-title">Wear What You<br>Imagine</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">👕</div>
+        <div class="product-info">
+          <div class="product-name">Custom T-Shirts</div>
+          <div class="product-price">From PKR 899</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🧥</div>
+        <div class="product-info">
+          <div class="product-name">Custom Hoodies</div>
+          <div class="product-price">From PKR 1,999</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👔</div>
+        <div class="product-info">
+          <div class="product-name">Polo Shirts</div>
+          <div class="product-price">From PKR 1,299</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👜</div>
+        <div class="product-info">
+          <div class="product-name">Tote Bags</div>
+          <div class="product-price">From PKR 599</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">Why Frill?</div>
+    <h2 class="section-title">Built for Pakistan.<br>Built for You.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎨</div>
+        <div class="why-title">Live Design Studio</div>
+        <p class="why-text">Browser-based canvas with Urdu font support, clipart, color controls, and real-time mockup preview. No design skills needed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏭</div>
+        <div class="why-title">In-House Manufacturing</div>
+        <p class="why-text">We own our DTG & sublimation printers — no middlemen. Full quality control, 3–5 day turnaround guaranteed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📦</div>
+        <div class="why-title">Order 1 or 1000</div>
+        <p class="why-text">No minimum order quantity. Perfect for individuals, student clubs, startups, and large corporate orders alike.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💳</div>
+        <div class="why-title">Local Payments</div>
+        <p class="why-text">JazzCash, EasyPaisa, bank transfer, and Cash on Delivery — the most convenient options for Pakistani shoppers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">fr<span>i</span>ll</div>
+  <p>www.frill.pk &nbsp;|&nbsp; Islamabad, Pakistan</p>
+  <p style="margin-top:0.5rem;">Hashim Ali Khan &nbsp;|&nbsp; FA24-BSE-027 &nbsp;|&nbsp; E-Commerce & Digital Marketing</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="business.html">Business Plan</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <p style="margin-top:2rem;font-size:0.75rem;opacity:0.5;">© 2026 Frill. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
