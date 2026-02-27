@@ -1,0 +1,73 @@
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+
+/* Primary Button */
+.btn-primary,
+.btn-submit {
+  background: var(--magenta);
+  color: var(--white);
+  padding: 0.9rem 2.5rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-base), transform var(--transition-fast);
+  display: inline-block;
+  font-family: var(--font-body);
+}
+
+.btn-primary:hover,
+.btn-submit:hover {
+  background: var(--magenta-light);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active,
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  color: var(--magenta);
+  border: 2px solid var(--magenta);
+  padding: 0.85rem 2.25rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: inline-block;
+  font-family: var(--font-body);
+}
+
+.btn-secondary:hover {
+  background: var(--magenta);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Button Group */
+.btn-group {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+}
