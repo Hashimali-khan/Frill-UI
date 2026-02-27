@@ -11,7 +11,8 @@ nav {
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:center;
+  gap: 3rem;
   padding: var(--space-md) var(--space-3xl);
 }
 
