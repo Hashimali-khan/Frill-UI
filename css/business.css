@@ -1,0 +1,226 @@
+/* ========================================
+   BUSINESS PAGE SPECIFIC STYLES
+   ======================================== */
+
+/* Business Model Card */
+.model-card {
+  background: var(--purple);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.model-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.model-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.model-text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Revenue Table */
+.rev-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-lg);
+}
+
+.rev-table th {
+  background: var(--purple);
+  color: var(--white);
+  padding: var(--space-md) 1.25rem;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.rev-table td {
+  padding: var(--space-md) 1.25rem;
+  border-bottom: 1px solid rgba(59, 31, 94, 0.08);
+  font-size: 0.9rem;
+}
+
+.rev-table tr:nth-child(even) td {
+  background: var(--white);
+}
+
+.rev-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--magenta);
+  display: inline-block;
+  margin-right: var(--space-md);
+}
+
+/* SMART Goal Grid */
+.smart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: var(--space-lg);
+}
+
+.smart-card {
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  border-top: 4px solid;
+  background: var(--white);
+}
+
+.smart-card:nth-child(1) {
+  border-color: var(--magenta);
+}
+
+.smart-card:nth-child(2) {
+  border-color: #7c3aed;
+}
+
+.smart-card:nth-child(3) {
+  border-color: #059669;
+}
+
+.smart-card:nth-child(4) {
+  border-color: #d97706;
+}
+
+.smart-card:nth-child(5) {
+  border-color: #2563eb;
+}
+
+.smart-letter {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--purple);
+}
+
+.smart-word {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+  display: block;
+  font-weight: 500;
+}
+
+.smart-content {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+/* Hosting Grid */
+.host-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: var(--space-lg);
+}
+
+.host-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+
+.host-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.host-title {
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: var(--space-sm);
+}
+
+.host-val {
+  color: var(--magenta);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.host-text {
+  color: var(--text-lighter);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+/* Tech Stack Grid */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.tech-pill {
+  background: var(--purple);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+}
+
+.tech-layer {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.tech-val {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .model-card {
+    grid-template-columns: 1fr;
+    padding: var(--space-xl);
+  }
+
+  .smart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .host-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rev-table {
+    font-size: 0.8rem;
+  }
+
+  .rev-table th,
+  .rev-table td {
+    padding: 0.75rem;
+  }
+}
