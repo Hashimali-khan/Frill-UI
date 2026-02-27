@@ -6,107 +6,14 @@
   <title>Business Plan – Frill</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --purple: #3B1F5E;
-      --purple-light: #5a3087;
-      --magenta: #C2185B;
-      --magenta-light: #e91e8c;
-      --cream: #FAF7FF;
-      --white: #ffffff;
-      --text-muted: #a78bcb;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--purple); }
-
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(59,31,94,0.97); backdrop-filter: blur(10px);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 4rem;
-    }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--white); }
-    .nav-logo span { color: var(--magenta); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--magenta-light); }
-
-    .page-hero {
-      background: var(--purple); padding: 10rem 4rem 5rem;
-      position: relative; overflow: hidden;
-    }
-    .page-hero::before {
-      content: ''; position: absolute; top: -150px; left: -150px;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(194,24,91,0.2) 0%, transparent 70%);
-    }
-    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
-    .page-eyebrow { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 1rem; }
-    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); color: var(--white); font-weight: 900; line-height: 1; }
-    .page-subtitle { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin-top: 1.5rem; }
-
-    .content-section { padding: 6rem 4rem; }
-    .content-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.75rem; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.8rem); color: var(--purple); margin-bottom: 1.5rem; }
-    p { color: #4a3060; line-height: 1.85; font-size: 1rem; margin-bottom: 1rem; }
-
-    /* BUSINESS MODEL */
-    .model-card {
-      background: var(--purple); color: var(--white);
-      border-radius: 20px; padding: 2.5rem; margin-top: 2rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    }
-    .model-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.5rem; }
-    .model-heading { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .model-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 0; }
-
-    /* REVENUE TABLE */
-    .rev-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
-    .rev-table th { background: var(--purple); color: var(--white); padding: 1rem 1.25rem; text-align: left; font-size: 0.85rem; }
-    .rev-table td { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(59,31,94,0.08); font-size: 0.9rem; }
-    .rev-table tr:nth-child(even) td { background: var(--white); }
-    .rev-bar { height: 8px; border-radius: 4px; background: var(--magenta); display: inline-block; }
-
-    /* SMART GOAL */
-    .smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .smart-card { border-radius: 16px; padding: 2rem; border-top: 4px solid; }
-    .smart-card:nth-child(1) { border-color: var(--magenta); background: var(--white); }
-    .smart-card:nth-child(2) { border-color: #7c3aed; background: var(--white); }
-    .smart-card:nth-child(3) { border-color: #059669; background: var(--white); }
-    .smart-card:nth-child(4) { border-color: #d97706; background: var(--white); }
-    .smart-card:nth-child(5) { border-color: #2563eb; background: var(--white); }
-    .smart-letter { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--purple); }
-    .smart-word { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
-    .smart-content { font-size: 0.9rem; line-height: 1.7; color: #4a3060; }
-
-    /* HOSTING */
-    .host-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .host-card { background: var(--white); border-radius: 16px; padding: 2rem; }
-    .host-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .host-title { font-weight: 600; color: var(--purple); margin-bottom: 0.5rem; }
-    .host-val { color: var(--magenta); font-weight: 500; font-size: 0.9rem; }
-    .host-text { color: #6b5080; font-size: 0.875rem; line-height: 1.6; margin-top: 0.25rem; margin-bottom: 0; }
-
-    /* TECH STACK */
-    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
-    .tech-pill { background: var(--purple); color: var(--white); border-radius: 12px; padding: 1.25rem; }
-    .tech-layer { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.25rem; }
-    .tech-val { font-size: 0.9rem; font-weight: 500; }
-
-    footer { background: var(--purple); color: var(--text-muted); text-align: center; padding: 3rem 4rem; }
-    footer .logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); font-weight: 900; }
-    footer .logo span { color: var(--magenta); }
-    footer p { margin-top: 1rem; font-size: 0.85rem; }
-    footer nav { margin-top: 1.5rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
-    footer nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-    footer nav a:hover { color: var(--magenta); }
-
-    @media (max-width: 768px) {
-      .model-card { grid-template-columns: 1fr; }
-      nav { padding: 1rem 1.5rem; }
-      .page-hero, .content-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-    }
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/business.css" />
   </style>
 </head>
 <body>
