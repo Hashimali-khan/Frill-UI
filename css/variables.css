@@ -1,0 +1,58 @@
+/* ========================================
+   FRILL-UI: CSS VARIABLES & RESET
+   ======================================== */
+
+:root {
+  /* Colors */
+  --purple: #3B1F5E;
+  --purple-light: #5a3087;
+  --magenta: #C2185B;
+  --magenta-light: #e91e8c;
+  --cream: #FAF7FF;
+  --white: #ffffff;
+  --text-muted: #a78bcb;
+  --text-dark: #4a3060;
+  --text-lighter: #6b5080;
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-full: 50px;
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.8s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--purple);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
