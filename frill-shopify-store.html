@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Frill — Wear Your Imagination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════
+   CSS VARIABLES & RESET
+═══════════════════════════════════════ */
+:root{
+  --purple:#3B1F5E;
+  --purple-mid:#5A3087;
+  --purple-light:#7C4BAD;
+  --magenta:#C2185B;
+  --magenta-hot:#E91E8C;
+  --cream:#FAF9FC;
+  --white:#FFFFFF;
+  --gray-50:#F8F8FA;
+  --gray-100:#F1EEF7;
+  --gray-200:#E2DBF0;
+  --gray-400:#9E8FBB;
+  --gray-600:#5D5070;
+  --gray-800:#2D1F45;
+  --border:#E5DEF2;
+  --shadow-sm:0 1px 3px rgba(59,31,94,.08),0 1px 2px rgba(59,31,94,.06);
+  --shadow-md:0 4px 16px rgba(59,31,94,.12),0 2px 6px rgba(59,31,94,.08);
+  --shadow-lg:0 10px 40px rgba(59,31,94,.15),0 4px 12px rgba(59,31,94,.1);
+  --shadow-xl:0 20px 60px rgba(59,31,94,.2);
+  --font-head:'Montserrat',sans-serif;
+  --font-serif:'Lora',serif;
+  --font-body:'Inter',sans-serif;
+  --radius:8px;
+  --radius-lg:16px;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --max-w:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--white);color:var(--gray-800);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;height:auto;object-fit:cover;}
+a{text-decoration:none;color:inherit;cursor:pointer;}
+button{cursor:pointer;font-family:inherit;}
+input,select,textarea{font-family:inherit;}
+::selection{background:var(--magenta);color:#fff;}
+
+/* Pages */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ═══════════════════════════════════════
+   ANNOUNCEMENT BAR
+═══════════════════════════════════════ */
+.ann-bar{background:var(--purple);color:#fff;text-align:center;padding:.55rem 1rem;font-family:var(--font-head);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative;}
+.ann-bar a{color:var(--magenta-hot);margin-left:.4rem;border-bottom:1px solid currentColor;}
+
+/* ═══════════════════════════════════════
+   HEADER / NAVIGATION (Shopify Dawn style)
+═══════════════════════════════════════ */
+.site-header{position:sticky;top:0;z-index:999;background:#fff;border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm);}
+.header-inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;gap:1.5rem;}
+
+/* Logo */
+.logo{display:flex;flex-direction:column;line-height:1;cursor:pointer;}
+.logo-text{font-family:var(--font-head);font-size:1.75rem;font-weight:900;color:var(--purple);letter-spacing:-1px;}
+.logo-text em{color:var(--magenta);font-style:normal;}
+.logo-tagline{font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-400);margin-top:1px;}
+
+/* Nav */
+.main-nav{display:flex;align-items:center;gap:.25rem;}
+.nav-link{font-family:var(--font-head);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-600);padding:.5rem .85rem;border-radius:var(--radius);transition:all .2s;cursor:pointer;}
+.nav-link:hover,.nav-link.active{color:var(--purple);background:var(--gray-100);}
+.nav-link.active{color:var(--magenta);}
+
+/* Header Actions */
+.header-actions{display:flex;align-items:center;gap:.5rem;}
+.hdr-btn{background:none;border:none;color:var(--gray-600);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s;position:relative;}
+.hdr-btn:hover{color:var(--purple);background:var(--gray-100);}
+.badge{position:absolute;top:4px;right:4px;background:var(--magenta);color:#fff;font-size:.6rem;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);padding:0 3px;}
+.btn-account{font-family:var(--font-head);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--purple);color:#fff;border:none;padding:.55rem 1.2rem;border-radius:var(--radius);transition:all .2s;}
+.btn-account:hover{background:var(--magenta);}
+
+/* USP Strip (below header, like Shopify) */
+.usp-strip{background:var(--gray-50);border-bottom:1px solid var(--border);padding:.6rem 0;}
+.usp-inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:center;gap:3rem;}
+.usp-item{display:flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:600;color:var(--gray-600);letter-spacing:.02em;font-family:var(--font-head);}
+.usp-item svg,.usp-icon{font-size:.95rem;color:var(--magenta);}
+
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-head);font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:.8rem 1.8rem;border-radius:var(--radius);border:2px solid transparent;transition:all .25s var(--ease);cursor:pointer;}
+.btn-primary{background:var(--purple);color:#fff;border-color:var(--purple);}
+.btn-primary:hover{background:var(--magenta);border-color:var(--magenta);transform:translateY(-1px);box-shadow:0 6px 20px rgba(194,24,91,.3);}
+.btn-secondary{background:transparent;color:var(--purple);border-color:var(--purple);}
+.btn-secondary:hover{background:var(--purple);color:#fff;}
+.btn-magenta{background:var(--magenta);color:#fff;border-color:var(--magenta);}
+.btn-magenta:hover{background:var(--magenta-hot);border-color:var(--magenta-hot);transform:translateY(-1px);box-shadow:0 6px 20px rgba(194,24,91,.35);}
+.btn-white{background:#fff;color:var(--purple);border-color:#fff;}
+.btn-white:hover{background:transparent;color:#fff;border-color:#fff;}
+.btn-lg{padding:1rem 2.4rem;font-size:.85rem;}
+.btn-sm{padding:.5rem 1.1rem;font-size:.72rem;}
+.btn-full{width:100%;}
+
+/* ═══════════════════════════════════════
+   HOME — HERO (Shopify slideshow style)
+═══════════════════════════════════════ */
+.hero{background:var(--purple);min-height:85vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem;position:relative;z-index:2;}
+.hero-glow{position:absolute;width:600px;height:600px;top:-100px;left:-200px;background:radial-gradient(circle,rgba(90,48,135,.5) 0%,transparent 60%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(194,24,91,.15);border:1px solid rgba(194,24,91,.35);border-radius:30px;padding:.35rem 1rem .35rem .6rem;font-family:var(--font-head);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta);margin-bottom:1.5rem;width:fit-content;}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--magenta);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+.hero-h1{font-family:var(--font-head);font-size:clamp(2.8rem,4.5vw,4.5rem);font-weight:900;color:#fff;line-height:.95;letter-spacing:-1.5px;margin-bottom:1.25rem;}
+.hero-h1 .line2{display:block;color:var(--magenta);font-style:italic;font-family:var(--font-serif);}
+.hero-desc{color:rgba(255,255,255,.68);font-size:1rem;line-height:1.8;max-width:440px;margin-bottom:2.2rem;}
+.hero-ctas{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:3rem;}
+.hero-trust{display:flex;align-items:center;gap:1.5rem;}
+.hero-trust-item{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.55);font-size:.75rem;font-family:var(--font-head);font-weight:500;}
+.hero-trust-check{color:var(--magenta);font-size:.85rem;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;min-height:85vh;object-fit:cover;opacity:.85;}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--purple) 0%,transparent 35%);}
+/* studio card on hero */
+.hero-card{position:absolute;bottom:2.5rem;right:2.5rem;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;width:220px;box-shadow:var(--shadow-xl);}
+.hero-card-title{font-family:var(--font-head);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:.6rem;}
+.hero-card-stat{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;}
+.hero-card-label{font-size:.78rem;color:var(--gray-600);}
+.hero-card-val{font-family:var(--font-head);font-size:.82rem;font-weight:800;color:var(--purple);}
+.hero-card-bar{height:4px;background:var(--gray-200);border-radius:2px;overflow:hidden;margin-bottom:.3rem;}
+.hero-card-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--magenta),var(--purple));}
+.hero-card-cta{font-family:var(--font-head);font-size:.7rem;font-weight:700;color:var(--magenta);text-transform:uppercase;letter-spacing:.06em;margin-top:.8rem;cursor:pointer;}
+
+/* ═══════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════ */
+.section{padding:5rem 0;}
+.section-inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;}
+.section-header{text-align:center;margin-bottom:3rem;}
+.eyebrow{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-head);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--magenta);margin-bottom:.75rem;}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:20px;height:1.5px;background:var(--magenta);border-radius:1px;}
+.section-title{font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--purple);letter-spacing:-0.5px;margin-bottom:.6rem;line-height:1.1;}
+.section-title em{color:var(--magenta);font-style:italic;font-family:var(--font-serif);}
+.section-sub{color:var(--gray-400);font-size:.95rem;line-height:1.75;max-width:520px;margin:0 auto;}
+
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
+.step-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:2rem 1.5rem;text-align:center;position:relative;transition:all .3s;overflow:hidden;}
+.step-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,31,94,.03) 0%,transparent 100%);}
+.step-card:hover{border-color:var(--magenta);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.step-num{font-family:var(--font-head);font-size:3.5rem;font-weight:900;color:var(--gray-200);line-height:1;margin-bottom:.5rem;}
+.step-icon{font-size:2.2rem;margin-bottom:1rem;}
+.step-title{font-family:var(--font-head);font-size:.9rem;font-weight:800;color:var(--purple);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.04em;}
+.step-desc{font-size:.82rem;color:var(--gray-400);line-height:1.65;}
+
+/* ═══════════════════════════════════════
+   FEATURED PRODUCTS (Shopify grid)
+═══════════════════════════════════════ */
+.products-section{background:var(--gray-50);}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
+
+/* Product Card */
+.product-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:all .3s var(--ease);cursor:pointer;}
+.product-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.product-card:hover .product-img{transform:scale(1.04);}
+.product-img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--gray-100);}
+.product-img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.product-badge{position:absolute;top:.75rem;left:.75rem;font-family:var(--font-head);font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .65rem;border-radius:4px;}
+.badge-custom{background:var(--purple);color:#fff;}
+.badge-new{background:var(--magenta);color:#fff;}
+.badge-sale{background:#16a34a;color:#fff;}
+.product-actions{position:absolute;bottom:.75rem;right:.75rem;display:flex;flex-direction:column;gap:.4rem;opacity:0;transform:translateX(10px);transition:all .3s;}
+.product-card:hover .product-actions{opacity:1;transform:translateX(0);}
+.pa-btn{background:#fff;border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;box-shadow:var(--shadow-md);transition:.2s;cursor:pointer;}
+.pa-btn:hover{background:var(--magenta);color:#fff;}
+.product-info{padding:1rem 1rem 1.25rem;}
+.product-vendor{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);font-family:var(--font-head);margin-bottom:.3rem;}
+.product-name{font-family:var(--font-head);font-size:.9rem;font-weight:700;color:var(--purple);margin-bottom:.35rem;line-height:1.25;}
+.product-desc-short{font-size:.78rem;color:var(--gray-400);line-height:1.5;margin-bottom:.65rem;}
+.product-price-row{display:flex;align-items:center;justify-content:space-between;}
+.product-price{font-family:var(--font-head);font-size:1rem;font-weight:800;color:var(--purple);}
+.product-price .old{font-size:.78rem;font-weight:500;color:var(--gray-400);text-decoration:line-through;margin-right:.3rem;}
+.product-stars{display:flex;align-items:center;gap:.3rem;font-size:.75rem;}
+.star{color:#F59E0B;}
+.star-count{color:var(--gray-400);font-size:.7rem;}
+.product-card-atc{width:100%;margin-top:.75rem;padding:.65rem;background:var(--purple);color:#fff;border:none;border-radius:var(--radius);font-family:var(--font-head);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:.2s;cursor:pointer;}
+.product-card-atc:hover{background:var(--magenta);}
+
+/* ═══════════════════════════════════════
+   DESIGN STUDIO CALLOUT
+═══════════════════════════════════════ */
+.studio-section{background:var(--purple);padding:5rem 0;overflow:hidden;position:relative;}
+.studio-glow{position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(194,24,91,.2) 0%,transparent 60%);pointer-events:none;}
+.studio-inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2;}
+.studio-left .eyebrow{color:rgba(255,255,255,.55);}
+.studio-left .eyebrow::before,.studio-left .eyebrow::after{background:rgba(255,255,255,.3);}
+.studio-title{font-family:var(--font-head);font-size:clamp(2rem,3.5vw,3rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:1rem;letter-spacing:-.5px;}
+.studio-title em{color:var(--magenta);font-style:italic;font-family:var(--font-serif);}
+.studio-desc{color:rgba(255,255,255,.65);font-size:.95rem;line-height:1.8;margin-bottom:2rem;}
+.studio-features{display:flex;flex-direction:column;gap:.85rem;margin-bottom:2.5rem;}
+.studio-feat{display:flex;align-items:flex-start;gap:.85rem;}
+.feat-icon{width:36px;height:36px;background:rgba(194,24,91,.15);border:1px solid rgba(194,24,91,.3);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.feat-text h4{font-family:var(--font-head);font-size:.82rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
+.feat-text p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.5;}
+/* Mock design studio UI */
+.studio-mockup{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);overflow:hidden;backdrop-filter:blur(10px);}
+.mockup-titlebar{background:rgba(0,0,0,.3);padding:.7rem 1rem;display:flex;align-items:center;gap:.5rem;}
+.titlebar-dot{width:10px;height:10px;border-radius:50%;}
+.titlebar-dot.r{background:#FF5F57;}.titlebar-dot.y{background:#FEBC2E;}.titlebar-dot.g{background:#28C840;}
+.mockup-url{flex:1;background:rgba(255,255,255,.06);border-radius:4px;padding:.25rem .75rem;font-family:var(--font-head);font-size:.65rem;color:rgba(255,255,255,.4);margin:0 .75rem;}
+.mockup-body{padding:1.25rem;}
+.mockup-tabs{display:flex;gap:.4rem;margin-bottom:1rem;}
+.m-tab{font-family:var(--font-head);font-size:.65rem;font-weight:600;padding:.3rem .7rem;border-radius:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;}
+.m-tab.active{background:var(--magenta);color:#fff;}
+.m-tab:not(.active){background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);}
+.mockup-canvas{background:linear-gradient(135deg,#1a0a30 0%,#2D1A50 100%);border-radius:var(--radius);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:1rem;}
+.canvas-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 30px),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 30px);}
+.canvas-tshirt{font-size:6rem;animation:floatY 3.5s ease-in-out infinite;filter:drop-shadow(0 12px 30px rgba(0,0,0,.4));}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.mockup-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;}
+.m-tool{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.45rem;text-align:center;font-family:var(--font-head);font-size:.6rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;transition:.2s;}
+.m-tool:hover{background:rgba(194,24,91,.2);border-color:rgba(194,24,91,.3);color:#fff;}
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+.reviews-section{background:var(--white);}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.review-card{background:var(--gray-50);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;}
+.review-stars{margin-bottom:.75rem;}
+.review-text{font-family:var(--font-serif);font-size:.9rem;font-style:italic;line-height:1.75;color:var(--gray-600);margin-bottom:1.25rem;}
+.review-author{display:flex;align-items:center;gap:.75rem;}
+.author-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--magenta));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:.85rem;color:#fff;flex-shrink:0;}
+.author-name{font-family:var(--font-head);font-size:.82rem;font-weight:700;color:var(--purple);}
+.author-sub{font-size:.72rem;color:var(--gray-400);}
+
+/* ═══════════════════════════════════════
+   MARQUEE STRIP
+═══════════════════════════════════════ */
+.marquee-strip{background:var(--magenta);padding:.9rem 0;overflow:hidden;}
+.marquee-inner{display:flex;gap:0;white-space:nowrap;animation:marquee 20s linear infinite;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.marquee-text{font-family:var(--font-head);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:0 2rem;display:inline-block;}
+.marquee-sep{color:rgba(255,255,255,.4);margin:0 .5rem;}
+
+/* ═══════════════════════════════════════
+   FOOTER (Shopify Dawn style)
+═══════════════════════════════════════ */
+.site-footer{background:var(--gray-800);color:rgba(255,255,255,.7);padding:4rem 0 0;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-brand .logo-text{font-size:1.5rem;color:#fff;}
+.footer-brand .logo-text em{color:var(--magenta);}
+.footer-brand .logo-tagline{color:rgba(255,255,255,.35);}
+.footer-brand p{font-size:.82rem;line-height:1.75;margin-top:1rem;color:rgba(255,255,255,.55);max-width:250px;}
+.footer-col h4{font-family:var(--font-head);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:1.25rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+.footer-links li a{font-size:.82rem;color:rgba(255,255,255,.5);transition:.2s;cursor:pointer;}
+.footer-links li a:hover{color:#fff;}
+.footer-newsletter p{font-size:.82rem;line-height:1.6;margin-bottom:1rem;color:rgba(255,255,255,.5);}
+.nl-form{display:flex;gap:.5rem;}
+.nl-input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:.7rem 1rem;color:#fff;font-size:.82rem;outline:none;transition:.2s;}
+.nl-input::placeholder{color:rgba(255,255,255,.3);}
+.nl-input:focus{border-color:var(--magenta);}
+.nl-btn{background:var(--magenta);border:none;color:#fff;padding:.7rem 1.1rem;border-radius:var(--radius);font-family:var(--font-head);font-size:.75rem;font-weight:700;transition:.2s;white-space:nowrap;}
+.nl-btn:hover{background:var(--magenta-hot);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;font-size:.75rem;color:rgba(255,255,255,.3);}
+.footer-payments{display:flex;align-items:center;gap:.5rem;}
+.payment-icon{background:rgba(255,255,255,.1);border-radius:4px;padding:.2rem .55rem;font-size:.62rem;font-family:var(--font-head);font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;}
+.footer-social{display:flex;gap:.75rem;margin-top:1.25rem;}
+.social-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.2s;cursor:pointer;}
+.social-btn:hover{background:var(--magenta);border-color:var(--magenta);}
+
+/* ═══════════════════════════════════════
+   COLLECTION PAGE
+═══════════════════════════════════════ */
+.collection-hero{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-mid) 100%);padding:3rem 0;text-align:center;}
+.collection-hero h1{font-family:var(--font-head);font-size:2rem;font-weight:900;color:#fff;letter-spacing:-.5px;}
+.collection-hero p{color:rgba(255,255,255,.6);font-size:.9rem;margin-top:.5rem;}
+.collection-breadcrumb{font-family:var(--font-head);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom.75rem;}
+.collection-breadcrumb span{color:rgba(255,255,255,.7);}
+
+.collection-layout{max-width:var(--max-w);margin:3rem auto;padding:0 2rem;}
+.collection-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.collection-count{font-size:.82rem;color:var(--gray-400);}
+.toolbar-right{display:flex;align-items:center;gap:1rem;}
+.sort-select{font-family:var(--font-head);font-size:.75rem;font-weight:600;color:var(--purple);border:1.5px solid var(--border);border-radius:var(--radius);padding:.5rem .9rem;background:#fff;cursor:pointer;outline:none;}
+.sort-select:focus{border-color:var(--magenta);}
+.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+
+/* ═══════════════════════════════════════
+   PRODUCT PAGE
+═══════════════════════════════════════ */
+.product-page{max-width:var(--max-w);margin:0 auto;padding:2.5rem 2rem;}
+.product-breadcrumb{font-family:var(--font-head);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:2rem;}
+.product-breadcrumb a{color:var(--gray-400);cursor:pointer;}
+.product-breadcrumb a:hover{color:var(--magenta);}
+.product-breadcrumb span{color:var(--gray-800);margin:0 .4rem;}
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+/* Images */
+.product-images{}
+.product-main-img{border-radius:var(--radius-lg);overflow:hidden;margin-bottom:.85rem;aspect-ratio:3/4;background:var(--gray-100);}
+.product-main-img img{width:100%;height:100%;object-fit:cover;}
+.product-thumbs{display:flex;gap:.5rem;}
+.product-thumb{width:70px;height:70px;border-radius:var(--radius);overflow:hidden;border:2px solid transparent;cursor:pointer;flex-shrink:0;transition:.2s;background:var(--gray-100);}
+.product-thumb.active,.product-thumb:hover{border-color:var(--purple);}
+.product-thumb img{width:100%;height:100%;object-fit:cover;}
+/* Info */
+.product-info-col{}
+.product-vendor-tag{font-family:var(--font-head);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta);margin-bottom:.5rem;}
+.product-title{font-family:var(--font-head);font-size:1.8rem;font-weight:900;color:var(--purple);line-height:1.15;margin-bottom:.75rem;letter-spacing:-.5px;}
+.product-rating-row{display:flex;align-items:center;gap.7rem;margin-bottom:1rem;}
+.product-rating-row .star-count{color:var(--gray-400);font-size:.8rem;margin-left:.3rem;}
+.product-price-display{font-family:var(--font-head);font-size:1.6rem;font-weight:900;color:var(--purple);margin-bottom:1.25rem;}
+.product-price-display .was{font-size:1rem;font-weight:500;color:var(--gray-400);text-decoration:line-through;margin-right:.4rem;}
+.product-price-display .save{font-size:.78rem;background:#dcfce7;color:#15803d;padding:.15rem .5rem;border-radius:4px;margin-left.4rem;}
+.product-desc{font-size:.88rem;line-height:1.8;color:var(--gray-600);margin-bottom:1.75rem;border-top:1px solid var(--border);padding-top:1.25rem;}
+.option-label{font-family:var(--font-head);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;}
+.option-swatches{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.color-swatch{width:32px;height:32px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:.2s;}
+.color-swatch.active,.color-swatch:hover{border-color:var(--purple);transform:scale(1.1);}
+.size-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.size-chip{font-family:var(--font-head);font-size:.75rem;font-weight:700;padding:.45rem .85rem;border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:.2s;color:var(--purple);}
+.size-chip.active,.size-chip:hover{border-color:var(--purple);background:var(--purple);color:#fff;}
+.qty-atc{display:flex;gap:.75rem;align-items:center;margin-bottom:1.25rem;}
+.qty-input{display:flex;align-items:center;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.qty-btn{background:#fff;border:none;width:36px;height:44px;font-size:1.1rem;color:var(--gray-600);cursor:pointer;transition:.2s;}
+.qty-btn:hover{background:var(--gray-100);}
+.qty-val{width:44px;text-align:center;font-family:var(--font-head);font-weight:700;color:var(--purple);font-size:.9rem;}
+.custom-badge-strip{display:flex;gap.5rem;flex-wrap:wrap;margin-bottom:1.5rem;gap:.5rem;}
+.custom-badge{display:flex;align-items:center;gap:.35rem;background:var(--gray-50);border:1px solid var(--border);border-radius:30px;padding:.3rem .75rem .3rem .5rem;font-family:var(--font-head);font-size:.68rem;font-weight:600;color:var(--gray-600);}
+.custom-badge-icon{color:var(--magenta);}
+.product-guarantee{background:var(--gray-50);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-top:1.25rem;}
+.guarantee-title{font-family:var(--font-head);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom.75rem;margin-bottom:.65rem;}
+.guarantee-items{display:flex;flex-direction:column;gap:.5rem;}
+.g-item{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--gray-600);}
+.g-icon{color:var(--magenta);font-size:.85rem;}
+
+/* Customizer CTA on product page */
+.customizer-cta{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-mid) 100%);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem;text-align:center;}
+.customizer-cta h4{font-family:var(--font-head);font-size:.9rem;font-weight:800;color:#fff;margin-bottom:.35rem;}
+.customizer-cta p{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:1rem;}
+
+/* ═══════════════════════════════════════
+   ABOUT PAGE
+═══════════════════════════════════════ */
+.about-hero{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-mid) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.about-hero::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(194,24,91,.2),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.about-hero h1{font-family:var(--font-head);font-size:2.8rem;font-weight:900;color:#fff;letter-spacing:-.5px;position:relative;z-index:2;}
+.about-hero p{color:rgba(255,255,255,.65);font-size:1rem;max-width:550px;margin:.75rem auto 0;line-height:1.75;position:relative;z-index:2;}
+.about-story{max-width:800px;margin:4rem auto;padding:0 2rem;}
+.story-block{margin-bottom:2.5rem;}
+.story-block h3{font-family:var(--font-head);font-size:1.1rem;font-weight:900;color:var(--purple);margin-bottom:.75rem;}
+.story-block p{font-size:.9rem;line-height:1.85;color:var(--gray-600);}
+.about-values{background:var(--gray-50);padding:4rem 0;}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.value-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:2rem 1.5rem;text-align:center;}
+.value-icon{font-size:2.5rem;margin-bottom:1rem;}
+.value-title{font-family:var(--font-head);font-size:.88rem;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;}
+.value-desc{font-size:.8rem;color:var(--gray-400);line-height:1.65;}
+.about-team{padding:4rem 0;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
+.team-card{text-align:center;}
+.team-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--magenta));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:900;font-size:1.5rem;color:#fff;margin:0 auto 1rem;}
+.team-name{font-family:var(--font-head);font-size:.88rem;font-weight:800;color:var(--purple);}
+.team-role{font-size:.78rem;color:var(--magenta);font-weight:600;margin-top:.2rem;}
+.team-bio{font-size:.78rem;color:var(--gray-400);margin-top:.5rem;line-height:1.6;}
+
+/* ═══════════════════════════════════════
+   CONTACT PAGE
+═══════════════════════════════════════ */
+.contact-page{max-width:var(--max-w);margin:4rem auto;padding:0 2rem;}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.contact-form-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;}
+.form-title{font-family:var(--font-head);font-size:1.2rem;font-weight:900;color:var(--purple);margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.25rem;}
+.form-label{font-family:var(--font-head);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);display:block;margin-bottom:.45rem;}
+.form-input{width:100%;border:1.5px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.88rem;outline:none;transition:.2s;font-family:var(--font-body);color:var(--gray-800);}
+.form-input:focus{border-color:var(--purple);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-textarea{resize:vertical;min-height:120px;}
+.contact-info-col{}
+.contact-info-title{font-family:var(--font-head);font-size:1.2rem;font-weight:900;color:var(--purple);margin-bottom:1.25rem;}
+.contact-info-items{display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2rem;}
+.ci-item{display:flex;align-items:flex-start;gap:1rem;}
+.ci-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--purple),var(--magenta));border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;flex-shrink:0;}
+.ci-label{font-family:var(--font-head);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);}
+.ci-val{font-size:.88rem;color:var(--gray-800);margin-top:.2rem;}
+.faq-section{background:var(--gray-50);padding:4rem 0;}
+.faq-list{max-width:700px;margin:2rem auto 0;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{font-family:var(--font-head);font-size:.88rem;font-weight:700;color:var(--purple);padding:1.1rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-q::after{content:'＋';color:var(--magenta);font-size:1.1rem;}
+.faq-a{font-size:.85rem;color:var(--gray-600);line-height:1.75;padding-bottom:1.1rem;}
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--purple);color:#fff;padding:1rem 1.5rem;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);font-family:var(--font-head);font-size:.82rem;font-weight:600;z-index:9999;transform:translateY(100px);opacity:0;transition:all .4s var(--ease);display:flex;align-items:center;gap:.6rem;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast-icon{background:var(--magenta);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE helpers
+═══════════════════════════════════════ */
+@media(max-width:900px){
+  .header-inner{padding:0 1.25rem;}
+  .main-nav{display:none;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-right{display:none;}
+  .hero-left{padding:3rem 1.5rem;}
+  .product-grid,.collection-grid{grid-template-columns:repeat(2,1fr);}
+  .steps-grid{grid-template-columns:repeat(2,1fr);}
+  .studio-inner{grid-template-columns:1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .product-layout{grid-template-columns:1fr;}
+  .contact-layout{grid-template-columns:1fr;}
+  .values-grid,.team-grid{grid-template-columns:1fr 1fr;}
+  .section-inner{padding:0 1.25rem;}
+  .collection-layout{padding:0 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════╗
+     ║  ANNOUNCEMENT BAR           ║
+     ╚══════════════════════════════╝ -->
+<div class="ann-bar">
+  🎨 Design your own — unlimited creativity, delivered to your door. &nbsp; <a onclick="showPage('collection')">Shop now →</a>
+</div>
+
+<!-- ╔══════════════════════════════╗
+     ║  SITE HEADER                ║
+     ╚══════════════════════════════╝ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-text">fr<em>i</em>ll</div>
+      <div class="logo-tagline">Wear Your Imagination</div>
+    </div>
+    <nav class="main-nav">
+      <a class="nav-link active" onclick="showPage('home')">Home</a>
+      <a class="nav-link" onclick="showPage('collection')">All Products</a>
+      <a class="nav-link" onclick="showPage('about')">Our Story</a>
+      <a class="nav-link" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="hdr-btn" title="Search">🔍</button>
+      <button class="hdr-btn" title="Wishlist">♡</button>
+      <button class="hdr-btn" title="Cart" onclick="showToast('🛒 Your cart is empty — start designing!')">
+        🛒
+        <span class="badge">0</span>
+      </button>
+      <button class="btn-account" onclick="showToast('👤 Account login coming soon!')">Log in</button>
+    </div>
+  </div>
+</header>
+
+<!-- USP Strip -->
+<div class="usp-strip">
+  <div class="usp-inner">
+    <div class="usp-item">✦ Free shipping over PKR 3,000</div>
+    <div class="usp-item">🖨️ In-house DTG printing</div>
+    <div class="usp-item">📦 5-day delivery nationwide</div>
+    <div class="usp-item">🎨 No minimum order — even 1 piece</div>
+    <div class="usp-item">💳 JazzCash · Easypaisa · COD</div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════╗
+     ║  HOME PAGE                  ║
+     ╚══════════════════════════════╝ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-glow"></div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Pakistan's First Custom Print Studio
+      </div>
+      <h1 class="hero-h1">
+        Design It.<br>
+        <span class="line2">Wear It.</span>
+        Own It.
+      </h1>
+      <p class="hero-desc">Upload your art, pick a garment, and we print it in-house with studio-grade DTG technology. Your imagination ships to your door in 5 days — no minimums, no compromises.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-magenta btn-lg" onclick="showPage('collection')">Shop All Products</button>
+        <button class="btn btn-white btn-lg" onclick="showToast('🎨 Design Studio launching soon!')">Start Designing Free</button>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span class="hero-trust-check">✔</span> 100% Colour Guarantee</div>
+        <div class="hero-trust-item"><span class="hero-trust-check">✔</span> Easy Returns</div>
+        <div class="hero-trust-item"><span class="hero-trust-check">✔</span> Made in Pakistan</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900&auto=format&fit=crop&q=80" alt="Custom fashion" onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&auto=format&fit=crop&q=80'"/>
+      <div class="hero-img-overlay"></div>
+      <div class="hero-card">
+        <div class="hero-card-title">Live Order Dashboard</div>
+        <div class="hero-card-stat"><span class="hero-card-label">Print Queue</span><span class="hero-card-val">24 orders</span></div>
+        <div class="hero-card-bar"><div class="hero-card-bar-fill" style="width:70%"></div></div>
+        <div class="hero-card-stat"><span class="hero-card-label">Today's Designs</span><span class="hero-card-val">138 unique</span></div>
+        <div class="hero-card-bar"><div class="hero-card-bar-fill" style="width:85%;background:linear-gradient(90deg,var(--purple),var(--purple-light))"></div></div>
+        <div class="hero-card-cta" onclick="showPage('collection')">View all products →</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-section" style="background:var(--white);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">How Frill Works</div>
+        <h2 class="section-title">Four steps to your <em>perfect</em> custom piece</h2>
+        <p class="section-sub">No design skills required. From idea to doorstep in as few as 5 days.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">👕</div>
+          <div class="step-title">Pick Your Garment</div>
+          <p class="step-desc">Choose from tees, hoodies, polo shirts, tote bags, and more. Select size, colour, and cut.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">🎨</div>
+          <div class="step-title">Design or Upload</div>
+          <p class="step-desc">Use our browser-based design studio with text tools, clipart, and Urdu font support — or upload your own artwork.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">🖨️</div>
+          <div class="step-title">We Print In-House</div>
+          <p class="step-desc">Your design goes straight to our DTG/sublimation printers. No outsourcing, no quality loss — printed on the same day orders are confirmed.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">🚚</div>
+          <div class="step-title">Delivered to You</div>
+          <p class="step-desc">Packaged, tracked, and delivered nationwide in 3–5 business days via our courier partners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-text">Design Your Own 🎨</span><span class="marquee-text">No Minimum Order ✦</span>
+      <span class="marquee-text">In-House DTG Printing 🖨️</span><span class="marquee-text">Nationwide Delivery 🚚</span>
+      <span class="marquee-text">Urdu Font Support ✦</span><span class="marquee-text">JazzCash · Easypaisa · COD 💳</span>
+      <span class="marquee-text">Design Your Own 🎨</span><span class="marquee-text">No Minimum Order ✦</span>
+      <span class="marquee-text">In-House DTG Printing 🖨️</span><span class="marquee-text">Nationwide Delivery 🚚</span>
+      <span class="marquee-text">Urdu Font Support ✦</span><span class="marquee-text">JazzCash · Easypaisa · COD 💳</span>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section products-section">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:left;">
+        <div class="eyebrow">Featured Products</div>
+        <h2 class="section-title">Bestselling <em>Frill</em> pieces</h2>
+        <p class="section-sub" style="max-width:none;">Every product is fully customisable — these are just our most loved base garments.</p>
+      </div>
+      <div style="text-align:right;margin-top:-1rem;margin-bottom:1.5rem;">
+        <button class="btn btn-secondary btn-sm" onclick="showPage('collection')">View All Products →</button>
+      </div>
+      <div class="product-grid" id="featured-products"></div>
+    </div>
+  </section>
+
+  <!-- DESIGN STUDIO CALLOUT -->
+  <section class="studio-section">
+    <div class="studio-glow"></div>
+    <div class="studio-inner">
+      <div class="studio-left">
+        <div class="eyebrow">The Frill Design Studio</div>
+        <h2 class="studio-title">Your imagination,<br><em>unlimited</em></h2>
+        <p class="studio-desc">No Canva, no Photoshop, no professional designer needed. Our browser-based studio puts full creative control in your hands — completely free to use.</p>
+        <div class="studio-features">
+          <div class="studio-feat">
+            <div class="feat-icon">🔤</div>
+            <div class="feat-text">
+              <h4>Urdu & English Typography</h4>
+              <p>40+ fonts including Nastaliq, Naskh, and modern Latin faces.</p>
+            </div>
+          </div>
+          <div class="studio-feat">
+            <div class="feat-icon">📤</div>
+            <div class="feat-text">
+              <h4>Upload Anything</h4>
+              <p>PNG, SVG, JPEG — we convert your file to 300DPI print-ready CMYK automatically.</p>
+            </div>
+          </div>
+          <div class="studio-feat">
+            <div class="feat-icon">👁️</div>
+            <div class="feat-text">
+              <h4>Live Product Preview</h4>
+              <p>See exactly how your design looks on the garment before you order.</p>
+            </div>
+          </div>
+          <div class="studio-feat">
+            <div class="feat-icon">🖼️</div>
+            <div class="feat-text">
+              <h4>1000+ Free Templates</h4>
+              <p>Curated for Eid, Independence Day, weddings, sports, and pop culture.</p>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-magenta btn-lg" onclick="showToast('🎨 Studio launching soon — join the waitlist!')">Try Studio Free →</button>
+      </div>
+      <div class="studio-right">
+        <div class="studio-mockup">
+          <div class="mockup-titlebar">
+            <div class="titlebar-dot r"></div>
+            <div class="titlebar-dot y"></div>
+            <div class="titlebar-dot g"></div>
+            <div class="mockup-url">studio.frill.pk — Design Studio</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-tabs">
+              <div class="m-tab active">Design</div>
+              <div class="m-tab">Templates</div>
+              <div class="m-tab">Upload</div>
+              <div class="m-tab">Preview</div>
+            </div>
+            <div class="mockup-canvas">
+              <div class="canvas-grid"></div>
+              <div class="canvas-tshirt">👕</div>
+            </div>
+            <div class="mockup-tools">
+              <div class="m-tool">🔤 Text</div>
+              <div class="m-tool">🖼️ Image</div>
+              <div class="m-tool">🎨 Color</div>
+              <div class="m-tool">📏 Size</div>
+              <div class="m-tool">↩️ Undo</div>
+              <div class="m-tool">🔄 Flip</div>
+              <div class="m-tool">📐 Align</div>
+              <div class="m-tool">✨ Effects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Customer Reviews</div>
+        <h2 class="section-title">The <em>Frill</em> community speaks</h2>
+        <p class="section-sub">4.9 / 5 stars from 2,400+ verified purchases.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Ordered custom hoodies for our startup team. The print quality is absolutely insane — colours didn't fade even after 10 washes. Will be ordering again for our next event."</p>
+          <div class="review-author">
+            <div class="author-avatar">AH</div>
+            <div>
+              <div class="author-name">Ahmed Hassan</div>
+              <div class="author-sub">Startup founder, Lahore · Verified buyer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"The design studio is genuinely so easy. I uploaded my own artwork, placed a single-piece order, and it arrived in 4 days looking exactly like the preview. Frill is different — you can feel it."</p>
+          <div class="review-author">
+            <div class="author-avatar">SR</div>
+            <div>
+              <div class="author-name">Sara Raza</div>
+              <div class="author-sub">Graphic designer, Islamabad · Verified buyer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Ordered 50 jerseys for our university cricket team. Frill gave us a bulk discount, assigned an account manager, and every single jersey was perfect. This is not your average print shop."</p>
+          <div class="review-author">
+            <div class="author-avatar">MK</div>
+            <div>
+              <div class="author-name">M. Kamran</div>
+              <div class="author-sub">Sports coordinator, NUST · Verified buyer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="background:var(--gray-50);padding:4rem 0;border-top:1px solid var(--border);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="eyebrow">Stay in the Loop</div>
+      <h2 class="section-title">Get design inspiration & <em>exclusive</em> offers</h2>
+      <p class="section-sub" style="margin:0 auto 2rem;">Join 8,000+ Frill subscribers. New templates, launch drops, and 10% off your first order.</p>
+      <div style="display:flex;gap:.75rem;max-width:420px;margin:0 auto;">
+        <input class="nl-input" type="email" placeholder="Enter your email" style="border:1.5px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.88rem;outline:none;flex:1;background:#fff;color:var(--gray-800);"/>
+        <button class="nl-btn btn" onclick="showToast('🎉 You\'re subscribed! Check your inbox.')">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ╔══════════════════════════════╗
+     ║  COLLECTION PAGE            ║
+     ╚══════════════════════════════╝ -->
+<div id="page-collection" class="page">
+  <div class="collection-hero">
+    <div style="max-width:var(--max-w);margin:0 auto;padding:0 2rem;">
+      <div class="collection-breadcrumb">Home <span>›</span> All Products</div>
+      <h1>All Products</h1>
+      <p>Every piece is fully customisable. Choose a base and make it yours.</p>
+    </div>
+  </div>
+  <div class="collection-layout">
+    <div class="collection-toolbar">
+      <div class="collection-count" id="collection-count">5 products</div>
+      <div class="toolbar-right">
+        <select class="sort-select">
+          <option>Sort by: Featured</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Best Selling</option>
+          <option>Newest</option>
+        </select>
+      </div>
+    </div>
+    <div class="collection-grid" id="collection-products"></div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════╗
+     ║  PRODUCT DETAIL PAGE        ║
+     ╚══════════════════════════════╝ -->
+<div id="page-product" class="page">
+  <div id="product-detail-content"></div>
+</div>
+
+<!-- ╔══════════════════════════════╗
+     ║  ABOUT PAGE                 ║
+     ╚══════════════════════════════╝ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <h1>Our Story</h1>
+    <p>Born in a dorm room. Built in Pakistan. Worn everywhere.</p>
+  </div>
+  <div class="about-story">
+    <div class="story-block">
+      <h3>🌱 Where It All Started</h3>
+      <p>Frill was born out of a simple frustration: custom clothing in Pakistan was either outrageously expensive, poor quality, or required a minimum of 100 pieces. As university students, we wanted to print 5 hoodies for our club event — and couldn't find a single local platform that made it possible. So we built one.</p>
+    </div>
+    <div class="story-block">
+      <h3>🏭 Why We Print In-House</h3>
+      <p>Every global print-on-demand platform outsources to third parties — which means longer delivery times, inconsistent quality, and zero control. At Frill, we invested in our own DTG and sublimation printers. That means every order that comes in goes directly to our production floor. Same-day printing. Colour-accurate output. Wash-resistant inks. This is the Frill difference.</p>
+    </div>
+    <div class="story-block">
+      <h3>🇵🇰 Proudly Pakistani</h3>
+      <p>Pakistan's textile sector exports $16 billion annually — yet Pakistani consumers have had no access to a world-class custom clothing platform. Frill changes that. We source premium blank garments from local mills, print locally, and deliver locally. Every rupee stays in the ecosystem.</p>
+    </div>
+    <div class="story-block">
+      <h3>🎯 Where We're Going</h3>
+      <p>We're not just building a print shop. Frill is the infrastructure for self-expression in South Asia — a platform where artists sell their designs, creators launch their merch, and brands customise their identity. The studio, the store, the manufacturing — it all points toward one vision: making creative self-expression accessible to everyone in Pakistan.</p>
+    </div>
+  </div>
+  <div class="about-values">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">What We Stand For</div>
+        <h2 class="section-title">Our <em>values</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎨</div>
+          <div class="value-title">Creative Freedom</div>
+          <p class="value-desc">No templates you're forced into. No designs you don't love. Full control, always.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⭐</div>
+          <div class="value-title">Print Quality First</div>
+          <p class="value-desc">We invest in the best equipment and inks so your print looks exactly like your vision.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌍</div>
+          <div class="value-title">Made in Pakistan</div>
+          <p class="value-desc">Local sourcing, local production, local delivery. Building an ecosystem, not just a business.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💚</div>
+          <div class="value-title">Sustainable Choices</div>
+          <p class="value-desc">On-demand printing means zero unsold inventory waste. We only produce what is ordered.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">Community Driven</div>
+          <p class="value-desc">Designer royalties, student ambassador discounts, creator programs — growth for everyone.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔒</div>
+          <div class="value-title">100% Satisfaction</div>
+          <p class="value-desc">If your print doesn't match the preview, we reprint it. No questions, no hassle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-team">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">The Team</div>
+        <h2 class="section-title">The people behind <em>Frill</em></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">HA</div>
+          <div class="team-name">Hashim Ali Khan</div>
+          <div class="team-role">Founder & CEO</div>
+          <p class="team-bio">BS Computer Science, COMSATS. Obsessed with building the custom clothing platform Pakistan deserves.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">ZA</div>
+          <div class="team-name">Zara Ahmed</div>
+          <div class="team-role">Head of Design & Studio</div>
+          <p class="team-bio">Graphic designer and textile enthusiast. Leads Frill's template library and design studio UX.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">MR</div>
+          <div class="team-name">M. Raza</div>
+          <div class="team-role">Head of Production</div>
+          <p class="team-bio">BTech Textile Engineering. Manages our in-house DTG printing operation and quality control.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════╗
+     ║  CONTACT PAGE               ║
+     ╚══════════════════════════════╝ -->
+<div id="page-contact" class="page">
+  <div class="collection-hero">
+    <div style="max-width:var(--max-w);margin:0 auto;padding:0 2rem;">
+      <div class="collection-breadcrumb">Home <span>›</span> Contact</div>
+      <h1>Get In Touch</h1>
+      <p>Questions about your order, bulk pricing, or partnerships? We're here.</p>
+    </div>
+  </div>
+  <div class="contact-page">
+    <div class="contact-layout">
+      <div class="contact-form-wrap">
+        <div class="form-title">Send us a message</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="Ali"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="Khan"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="ali@example.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <select class="form-input sort-select" style="width:100%;border-radius:var(--radius);">
+            <option>Select a topic</option>
+            <option>Order enquiry</option>
+            <option>Bulk / corporate order</option>
+            <option>Design studio help</option>
+            <option>Partnerships & affiliates</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input form-textarea" placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="showToast('✅ Message sent! We\'ll reply within 24 hours.')">Send Message</button>
+      </div>
+      <div class="contact-info-col">
+        <div class="contact-info-title">Contact Information</div>
+        <div class="contact-info-items">
+          <div class="ci-item">
+            <div class="ci-icon">📧</div>
+            <div><div class="ci-label">Email</div><div class="ci-val">hello@frill.pk</div></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📱</div>
+            <div><div class="ci-label">WhatsApp</div><div class="ci-val">+92 300 FRILL01</div></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div><div class="ci-label">Studio Address</div><div class="ci-val">Block D, Blue Area, Islamabad, Pakistan</div></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🕐</div>
+            <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon–Sat, 9 AM – 7 PM PKT</div></div>
+          </div>
+        </div>
+        <div style="background:var(--gray-50);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;">
+          <div style="font-family:var(--font-head);font-size:.82rem;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;">Bulk Order Enquiry</div>
+          <p style="font-size:.82rem;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Need 20+ pieces for your team, event, or brand? Get dedicated account management, tiered pricing, and priority production.</p>
+          <button class="btn btn-magenta btn-sm btn-full" onclick="showToast('📋 A bulk order specialist will contact you within 2 hours.')">Request Bulk Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="faq-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="section-title">Common <em>questions</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">What's the minimum order quantity?</div>
+          <div class="faq-a">Just 1 piece! Frill accepts single-piece orders at no extra charge. This is one of our core USPs — no one else in Pakistan offers this with in-house production.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How long does delivery take?</div>
+          <div class="faq-a">3–5 business days nationwide. Islamabad orders can arrive in as little as 2 days. You'll receive a tracking link via SMS and email once dispatched.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What print methods do you use?</div>
+          <div class="faq-a">We use Direct-to-Garment (DTG) for cotton garments and dye-sublimation for polyester. Both methods produce vibrant, wash-resistant prints that last hundreds of washes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I upload my own artwork?</div>
+          <div class="faq-a">Absolutely. Upload PNG, SVG, or JPEG files through the design studio. We recommend 300 DPI or higher for the sharpest print output. Our system processes your file automatically.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you accept Cash on Delivery?</div>
+          <div class="faq-a">Yes! We accept COD nationwide, plus JazzCash, Easypaisa, bank transfer, and all major credit/debit cards through our secure payment gateway.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" onclick="showPage('home')">
+          <div class="logo-text">fr<em>i</em>ll</div>
+          <div class="logo-tagline">Wear Your Imagination</div>
+        </div>
+        <p>Pakistan's first integrated custom clothing studio. Design it, print it, wear it — from Islamabad to everywhere.</p>
+        <div class="footer-social">
+          <div class="social-btn" onclick="showToast('📸 Follow us @frill.pk on Instagram!')">📸</div>
+          <div class="social-btn" onclick="showToast('🎵 Find us on TikTok @frill.pk!')">🎵</div>
+          <div class="social-btn" onclick="showToast('💼 Connect on LinkedIn!')">💼</div>
+          <div class="social-btn" onclick="showToast('💬 Chat on WhatsApp!')">💬</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('collection')">All Products</a></li>
+          <li><a onclick="showToast('🎨 Studio launching soon!')">Design Studio</a></li>
+          <li><a onclick="showPage('about')">Our Story</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul class="footer-links">
+          <li><a onclick="showToast('📏 Size chart coming!')">Size Chart</a></li>
+          <li><a onclick="showToast('🚚 Shipping info coming!')">Shipping Policy</a></li>
+          <li><a onclick="showToast('↩️ Returns info coming!')">Return Policy</a></li>
+          <li><a onclick="showPage('contact')">FAQ</a></li>
+          <li><a onclick="showPage('contact')">Track My Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>New templates, drops, and exclusive discounts — straight to your inbox.</p>
+        <div class="nl-form">
+          <input class="nl-input" type="email" placeholder="Your email"/>
+          <button class="nl-btn" onclick="showToast('🎉 Subscribed!')">Go</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Frill · www.frill.pk · All rights reserved.</span>
+      <div class="footer-payments">
+        <span class="payment-icon">JazzCash</span>
+        <span class="payment-icon">Easypaisa</span>
+        <span class="payment-icon">COD</span>
+        <span class="payment-icon">VISA</span>
+        <span class="payment-icon">MC</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span id="toast-msg">Added to cart!</span></div>
+
+<script>
+/* ═══════════════════════════════════════
+   PRODUCT DATA
+═══════════════════════════════════════ */
+const PRODUCTS = [
+  {
+    id: 1,
+    name: "Classic Custom Hoodie",
+    vendor: "Frill Custom Apparel",
+    price: "PKR 2,499",
+    oldPrice: "PKR 3,200",
+    desc: "Premium 320 GSM fleece hoodie — the canvas for your greatest design yet.",
+    longDesc: "Our most popular base garment. This 320 GSM fleece hoodie is pre-washed, pre-shrunk, and blank-ready for DTG printing. Available in 12 base colours with a kangaroo pocket and double-stitched hem. Upload your artwork and see it come to life on the live preview before ordering. Wash-resistant inks guaranteed for 200+ washes.",
+    badge: "BESTSELLER",
+    badgeClass: "badge-new",
+    img: "https://images.unsplash.com/photo-1738486260590-23c954cf29b8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBsYWluJTIwaG9vZGllfGVufDB8fDB8fHww",
+    imgs: [
+      "https://unsplash.com/photos/white-zip-up-jacket-hanging-on-brown-wooden-clothes-hanger-kJXGTOY1wLQ",
+      "https://unsplash.com/photos/white-zip-up-jacket-hanging-on-brown-wooden-clothes-hanger-kJXGTOY1wLQ",
+    ],
+    stars: 4.9, reviews: 312,
+    colors: ["#3B1F5E","#1a1a1a","#fff","#C2185B","#2563EB","#16a34a"],
+    sizes: ["XS","S","M","L","XL","2XL","3XL"],
+    customizable: true
+  },
+  {
+    id: 2,
+    name: "Signature Unisex Tee",
+    vendor: "Frill Custom Apparel",
+    price: "PKR 1,199",
+    oldPrice: null,
+    desc: "180 GSM combed cotton — soft, durable, and print-ready for anything.",
+    longDesc: "The foundation of any great wardrobe. Our Signature Tee uses 180 GSM combed ringspun cotton for a soft hand-feel that holds DTG ink beautifully. Available in 16 base colours. Whether you're printing a single tee for yourself or 100 for your event, every piece gets the same precision printing. Crew neck, taped shoulders, tear-away label.",
+    badge: "CUSTOM",
+    badgeClass: "badge-custom",
+    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80",
+    imgs: [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=600&auto=format&fit=crop&q=80",
+    ],
+    stars: 4.8, reviews: 580,
+    colors: ["#fff","#1a1a1a","#3B1F5E","#C2185B","#F59E0B","#6b7280"],
+    sizes: ["XS","S","M","L","XL","2XL"],
+    customizable: true
+  },
+  {
+    id: 3,
+    name: "Premium Polo Shirt",
+    vendor: "Frill Custom Apparel",
+    price: "PKR 1,799",
+    oldPrice: "PKR 2,200",
+    desc: "Piqué cotton polo with embroidered or printed customisation options.",
+    longDesc: "Elevate your corporate uniform or team kit with our Premium Polo. Made from 220 GSM piqué cotton, it offers a clean professional look with a 3-button placket, ribbed collar, and side vents. Available for DTG full-front print or embroidered logo on the chest. Most popular for company uniforms, sports teams, and restaurant staff.",
+    badge: "SALE",
+    badgeClass: "badge-sale",
+    img: "https://unsplash.com/photos/a-white-and-beige-shirt-with-a-black-collar-rhzkqvr4NH4",
+    imgs: [
+      "https://unsplash.com/photos/a-white-and-beige-shirt-with-a-black-collar-rhzkqvr4NH4",
+    ],
+    stars: 4.7, reviews: 198,
+    colors: ["#fff","#1a1a1a","#2563EB","#3B1F5E","#16a34a"],
+    sizes: ["S","M","L","XL","2XL","3XL"],
+    customizable: true
+  },
+  {
+    id: 4,
+    name: "All-Over Print Jacket",
+    vendor: "Frill Custom Apparel",
+    price: "PKR 4,999",
+    oldPrice: "PKR 6,500",
+    desc: "Sublimation-printed jacket with edge-to-edge custom design. Statement piece.",
+    longDesc: "Our most dramatic canvas. This windbreaker-style jacket uses dye-sublimation printing to push your design across every centimetre of fabric — seams, zips, cuffs included. The all-over effect is possible only with sublimation on polyester, and the result is something truly unique. Lightweight, water-resistant shell. Great for event jackets, festival wear, sports teams, and brand activations.",
+    badge: "CUSTOM",
+    badgeClass: "badge-custom",
+    img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format&fit=crop&q=80",
+    imgs: [
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format&fit=crop&q=80",
+    ],
+    stars: 4.9, reviews: 87,
+    colors: ["#3B1F5E","#1a1a1a","#fff","#C2185B"],
+    sizes: ["S","M","L","XL","2XL"],
+    customizable: true
+  },
+  {
+    id: 5,
+    name: "Eco Canvas Tote Bag",
+    vendor: "Frill Custom Apparel",
+    price: "PKR 799",
+    oldPrice: null,
+    desc: "12 oz natural cotton tote — perfect for printed artwork, brand logos, and gifting.",
+    longDesc: "The most giftable custom product in our catalogue. Our 12 oz natural canvas tote bags are printed with our DTG machines for sharp, full-colour designs on a natural cotton base. Available in natural, black, and navy. Great for university clubs, café merchandise, event giveaways, and artist print runs. Reinforced stitched handles rated for 15 kg.",
+    badge: "NEW",
+    badgeClass: "badge-new",
+    img: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+    imgs: [
+      "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+    ],
+    stars: 4.8, reviews: 254,
+    colors: ["#d4c49a","#1a1a1a","#1e3a5f"],
+    sizes: ["One Size"],
+    customizable: true
+  }
+];
+
+/* ═══════════════════════════════════════
+   PAGE NAVIGATION
+═══════════════════════════════════════ */
+function showPage(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el = document.getElementById('page-'+page);
+  if(el) el.classList.add('active');
+  // update nav
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  const map = {home:0,collection:1,about:2,contact:3};
+  const links = document.querySelectorAll('.nav-link');
+  if(map[page]!==undefined && links[map[page]]) links[map[page]].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  const m = document.getElementById('toast-msg');
+  m.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+/* ═══════════════════════════════════════
+   RENDER PRODUCT CARD
+═══════════════════════════════════════ */
+function renderProductCard(p, onclick){
+  const stars = '⭐'.repeat(Math.round(p.stars));
+  const priceHtml = p.oldPrice 
+    ? `<span class="old">${p.oldPrice}</span> ${p.price}`
+    : p.price;
+  return `
+    <div class="product-card" onclick="${onclick}">
+      <div class="product-img-wrap">
+        <img class="product-img" src="${p.img}" alt="${p.name}" onerror="this.style.background='var(--gray-200)'"/>
+        <span class="product-badge ${p.badgeClass}">${p.badge}</span>
+        ${p.customizable ? `<span class="product-badge badge-custom" style="top:0.75rem;right:0.75rem;left:auto;">🎨 Customise</span>` : ''}
+        <div class="product-actions">
+          <button class="pa-btn" onclick="event.stopPropagation();showToast('♡ Saved to wishlist!')">♡</button>
+          <button class="pa-btn" onclick="event.stopPropagation();showToast('🔍 Quick view coming!')">👁</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-vendor">${p.vendor}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc-short">${p.desc}</div>
+        <div class="product-price-row">
+          <div class="product-price">${priceHtml}</div>
+          <div class="product-stars"><span class="star">⭐</span><span class="star-count">${p.stars} (${p.reviews})</span></div>
+        </div>
+        <button class="product-card-atc" onclick="event.stopPropagation();showToast('🛒 ${p.name} added to cart!')">Add to Cart</button>
+      </div>
+    </div>`;
+}
+
+/* ═══════════════════════════════════════
+   RENDER PRODUCT DETAIL
+═══════════════════════════════════════ */
+function showProduct(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  const colSwatches = p.colors.map(c=>`<div class="color-swatch ${c===p.colors[0]?'active':''}" style="background:${c}" onclick="this.parentElement.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));this.classList.add('active');" title="${c}"></div>`).join('');
+  const sizeChips = p.sizes.map(s=>`<div class="size-chip ${s===p.sizes[2]||s==='One Size'?'active':''}" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(x=>x.classList.remove('active'));this.classList.add('active')">${s}</div>`).join('');
+  const thumbs = p.imgs.map((img,i)=>`<div class="product-thumb ${i===0?'active':''}" onclick="document.getElementById('main-prod-img').src='${img}';this.parentElement.querySelectorAll('.product-thumb').forEach(t=>t.classList.remove('active'));this.classList.add('active')"><img src="${img}" alt=""/></div>`).join('');
+  const priceDisplay = p.oldPrice
+    ? `<span class="was">${p.oldPrice}</span> ${p.price} <span class="save">You save!</span>`
+    : p.price;
+
+  document.getElementById('product-detail-content').innerHTML = `
+    <div class="product-page">
+      <div class="product-breadcrumb">
+        <a onclick="showPage('home')">Home</a><span>›</span>
+        <a onclick="showPage('collection')">All Products</a><span>›</span>
+        ${p.name}
+      </div>
+      <div class="product-layout">
+        <div class="product-images">
+          <div class="product-main-img">
+            <img id="main-prod-img" src="${p.imgs[0]}" alt="${p.name}"/>
+          </div>
+          <div class="product-thumbs">${thumbs}</div>
+        </div>
+        <div class="product-info-col">
+          <div class="product-vendor-tag">${p.vendor}</div>
+          <h1 class="product-title">${p.name}</h1>
+          <div class="product-rating-row">
+            <span class="star">⭐⭐⭐⭐⭐</span>
+            <span class="star-count">${p.stars} · ${p.reviews} reviews</span>
+          </div>
+          <div class="product-price-display">${priceDisplay}</div>
+          <div class="custom-badge-strip">
+            <div class="custom-badge"><span class="custom-badge-icon">🎨</span> Upload your design</div>
+            <div class="custom-badge"><span class="custom-badge-icon">🖨️</span> In-house DTG printing</div>
+            <div class="custom-badge"><span class="custom-badge-icon">📦</span> 5-day delivery</div>
+            <div class="custom-badge"><span class="custom-badge-icon">✔</span> No minimum order</div>
+          </div>
+          <div class="product-desc">${p.longDesc}</div>
+          <div class="option-label">Colour</div>
+          <div class="option-swatches">${colSwatches}</div>
+          <div class="option-label">Size</div>
+          <div class="size-chips">${sizeChips}</div>
+          <div class="qty-atc">
+            <div class="qty-input">
+              <button class="qty-btn" onclick="let v=document.getElementById('qty-val');v.textContent=Math.max(1,parseInt(v.textContent)-1)">−</button>
+              <div class="qty-val" id="qty-val">1</div>
+              <button class="qty-btn" onclick="let v=document.getElementById('qty-val');v.textContent=parseInt(v.textContent)+1">+</button>
+            </div>
+            <button class="btn btn-primary" style="flex:1" onclick="showToast('🛒 ${p.name} added to cart!')">Add to Cart</button>
+          </div>
+          <button class="btn btn-magenta btn-full" onclick="showToast('🎨 Opening design studio for ${p.name}...')">🎨 Customise This Garment</button>
+          <div class="product-guarantee">
+            <div class="guarantee-title">Our Guarantee</div>
+            <div class="guarantee-items">
+              <div class="g-item"><span class="g-icon">✔</span> Colour-accurate print or we reprint free</div>
+              <div class="g-item"><span class="g-icon">✔</span> Wash-resistant inks — tested 200+ washes</div>
+              <div class="g-item"><span class="g-icon">✔</span> Easy 7-day returns on non-custom items</div>
+              <div class="g-item"><span class="g-icon">✔</span> Real-time order tracking via SMS</div>
+            </div>
+          </div>
+          <div class="customizer-cta">
+            <h4>🎨 This product is fully customisable</h4>
+            <p>Use the Frill Design Studio to add text, upload your art, choose clipart, or browse templates — completely free, no design skills required.</p>
+            <button class="btn btn-white btn-sm" onclick="showToast('🚀 Studio opening...')">Open Design Studio →</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  showPage('product');
+}
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+function init(){
+  // Featured (4 products on home)
+  const fg = document.getElementById('featured-products');
+  if(fg) fg.innerHTML = PRODUCTS.slice(0,4).map(p=>renderProductCard(p,`showProduct(${p.id})`)).join('');
+
+  // Collection (all products)
+  const cg = document.getElementById('collection-products');
+  if(cg) cg.innerHTML = PRODUCTS.map(p=>renderProductCard(p,`showProduct(${p.id})`)).join('');
+  const cc = document.getElementById('collection-count');
+  if(cc) cc.textContent = `${PRODUCTS.length} products`;
+}
+init();
+</script>
+</body>
+</html>

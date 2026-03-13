@@ -1,134 +1,625 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frill – Wear Your Imagination</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <!-- Modular CSS -->
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/nav.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/typography.css" />
-  <link rel="stylesheet" href="css/buttons.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/home.css" />
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frill — Wear Your Imagination</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- CSS Modules (order matters) -->
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/layout.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">fr<span>i</span>ll</div>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="business.html">Business Plan</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Pakistan's #1 Custom Clothing Platform</div>
-    <h1 class="hero-title">fr<span>i</span>ll</h1>
-    <div class="hero-tagline">Wear Your Imagination</div>
-    <p class="hero-desc">Design and order fully customized printed T-shirts, hoodies, polo shirts, and tote bags — entirely online. Your vision, our craft.</p>
-    <div class="hero-buttons">
-      <a href="about.html" class="btn-primary">Explore Frill</a>
-      <a href="contact.html" class="btn-outline">Contact Us</a>
-    </div>
-  </div>
-</section>
-
-<div class="strip">
-  <span class="strip-item">✦ DTG Printing Technology</span>
-  <span class="strip-item">✦ No Minimum Order</span>
-  <span class="strip-item">✦ 3–5 Day Delivery</span>
-  <span class="strip-item">✦ JazzCash &amp; EasyPaisa</span>
-  <span class="strip-item">✦ Cash on Delivery</span>
+<!-- ════════════════════════════════════
+     ANNOUNCEMENT BAR
+════════════════════════════════════ -->
+<div class="ann-bar">
+  🎨 Design your own — unlimited creativity, delivered to your door. &nbsp; <a onclick="showPage('collection')">Shop now →</a>
 </div>
 
-<section class="section products-section">
-  <div style="max-width:1200px;margin:0 auto;">
-    <div class="section-label">Our Products</div>
-    <h2 class="section-title">Wear What You<br>Imagine</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-img">👕</div>
-        <div class="product-info">
-          <div class="product-name">Custom T-Shirts</div>
-          <div class="product-price">From PKR 899</div>
+<!-- ════════════════════════════════════
+     SITE HEADER
+════════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-text">fr<em>i</em>ll</div>
+      <div class="logo-tagline">Wear Your Imagination</div>
+    </div>
+    <nav class="main-nav">
+      <a class="nav-link active" onclick="showPage('home')">Home</a>
+      <a class="nav-link" onclick="showPage('collection')">All Products</a>
+      <a class="nav-link" onclick="showPage('about')">Our Story</a>
+      <a class="nav-link" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="hdr-btn" title="Search">🔍</button>
+      <button class="hdr-btn" title="Wishlist">♡</button>
+      <button class="hdr-btn" title="Cart" onclick="showToast('🛒 Your cart is empty — start designing!')">
+        🛒
+        <span class="badge">0</span>
+      </button>
+      <button class="btn-account" onclick="showToast('👤 Account login coming soon!')">Log in</button>
+    </div>
+  </div>
+</header>
+
+<!-- USP Strip -->
+<div class="usp-strip">
+  <div class="usp-inner">
+    <div class="usp-item">✦ Free shipping over PKR 3,000</div>
+    <div class="usp-item">🖨️ In-house DTG printing</div>
+    <div class="usp-item">📦 5-day delivery nationwide</div>
+    <div class="usp-item">🎨 No minimum order — even 1 piece</div>
+    <div class="usp-item">💳 JazzCash · Easypaisa · COD</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-glow"></div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Pakistan's First Custom Print Studio
+      </div>
+      <h1 class="hero-h1">
+        Design It.<br>
+        <span class="line2">Wear It.</span>
+        Own It.
+      </h1>
+      <p class="hero-desc">Upload your art, pick a garment, and we print it in-house with studio-grade DTG technology. Your imagination ships to your door in 5 days — no minimums, no compromises.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-magenta btn-lg" onclick="showPage('collection')">Shop All Products</button>
+        <button class="btn btn-white btn-lg" onclick="showToast('🎨 Design Studio launching soon!')">Start Designing Free</button>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span class="hero-trust-check">✔</span> 100% Colour Guarantee</div>
+        <div class="hero-trust-item"><span class="hero-trust-check">✔</span> Easy Returns</div>
+        <div class="hero-trust-item"><span class="hero-trust-check">✔</span> Made in Pakistan</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900&auto=format&fit=crop&q=80" alt="Custom fashion" onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&auto=format&fit=crop&q=80'"/>
+      <div class="hero-img-overlay"></div>
+      <div class="hero-card">
+        <div class="hero-card-title">Live Order Dashboard</div>
+        <div class="hero-card-stat"><span class="hero-card-label">Print Queue</span><span class="hero-card-val">24 orders</span></div>
+        <div class="hero-card-bar"><div class="hero-card-bar-fill" style="width:70%"></div></div>
+        <div class="hero-card-stat"><span class="hero-card-label">Today's Designs</span><span class="hero-card-val">138 unique</span></div>
+        <div class="hero-card-bar"><div class="hero-card-bar-fill" style="width:85%;background:linear-gradient(90deg,var(--purple),var(--purple-light))"></div></div>
+        <div class="hero-card-cta" onclick="showPage('collection')">View all products →</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-section" style="background:var(--white);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">How Frill Works</div>
+        <h2 class="section-title">Four steps to your <em>perfect</em> custom piece</h2>
+        <p class="section-sub">No design skills required. From idea to doorstep in as few as 5 days.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">👕</div>
+          <div class="step-title">Pick Your Garment</div>
+          <p class="step-desc">Choose from tees, hoodies, polo shirts, tote bags, and more. Select size, colour, and cut.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">🎨</div>
+          <div class="step-title">Design or Upload</div>
+          <p class="step-desc">Use our browser-based design studio with text tools, clipart, and Urdu font support — or upload your own artwork.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">🖨️</div>
+          <div class="step-title">We Print In-House</div>
+          <p class="step-desc">Your design goes straight to our DTG/sublimation printers. No outsourcing, no quality loss — printed on the same day orders are confirmed.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">🚚</div>
+          <div class="step-title">Delivered to You</div>
+          <p class="step-desc">Packaged, tracked, and delivered nationwide in 3–5 business days via our courier partners.</p>
         </div>
       </div>
-      <div class="product-card">
-        <div class="product-img">🧥</div>
-        <div class="product-info">
-          <div class="product-name">Custom Hoodies</div>
-          <div class="product-price">From PKR 1,999</div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-text">Design Your Own 🎨</span><span class="marquee-text">No Minimum Order ✦</span>
+      <span class="marquee-text">In-House DTG Printing 🖨️</span><span class="marquee-text">Nationwide Delivery 🚚</span>
+      <span class="marquee-text">Urdu Font Support ✦</span><span class="marquee-text">JazzCash · Easypaisa · COD 💳</span>
+      <span class="marquee-text">Design Your Own 🎨</span><span class="marquee-text">No Minimum Order ✦</span>
+      <span class="marquee-text">In-House DTG Printing 🖨️</span><span class="marquee-text">Nationwide Delivery 🚚</span>
+      <span class="marquee-text">Urdu Font Support ✦</span><span class="marquee-text">JazzCash · Easypaisa · COD 💳</span>
+    </div>
+  </div>
+
+  <!-- Featured Products (rendered dynamically from products.js) -->
+  <section class="section products-section">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:left;">
+        <div class="eyebrow">Featured Products</div>
+        <h2 class="section-title">Bestselling <em>Frill</em> pieces</h2>
+        <p class="section-sub" style="max-width:none;">Every product is fully customisable — these are just our most loved base garments.</p>
+      </div>
+      <div style="text-align:right;margin-top:-1rem;margin-bottom:1.5rem;">
+        <button class="btn btn-secondary btn-sm" onclick="showPage('collection')">View All Products →</button>
+      </div>
+      <div class="product-grid" id="featured-products">
+        <!-- Populated by js/app.js from js/products.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Studio Callout -->
+  <section class="studio-section">
+    <div class="studio-glow"></div>
+    <div class="studio-inner">
+      <div class="studio-left">
+        <div class="eyebrow">The Frill Design Studio</div>
+        <h2 class="studio-title">Your imagination,<br><em>unlimited</em></h2>
+        <p class="studio-desc">No Canva, no Photoshop, no professional designer needed. Our browser-based studio puts full creative control in your hands — completely free to use.</p>
+        <div class="studio-features">
+          <div class="studio-feat">
+            <div class="feat-icon">🔤</div>
+            <div class="feat-text">
+              <h4>Urdu & English Typography</h4>
+              <p>40+ fonts including Nastaliq, Naskh, and modern Latin faces.</p>
+            </div>
+          </div>
+          <div class="studio-feat">
+            <div class="feat-icon">📤</div>
+            <div class="feat-text">
+              <h4>Upload Anything</h4>
+              <p>PNG, SVG, JPEG — we convert your file to 300DPI print-ready CMYK automatically.</p>
+            </div>
+          </div>
+          <div class="studio-feat">
+            <div class="feat-icon">👁️</div>
+            <div class="feat-text">
+              <h4>Live Product Preview</h4>
+              <p>See exactly how your design looks on the garment before you order.</p>
+            </div>
+          </div>
+          <div class="studio-feat">
+            <div class="feat-icon">🖼️</div>
+            <div class="feat-text">
+              <h4>1000+ Free Templates</h4>
+              <p>Curated for Eid, Independence Day, weddings, sports, and pop culture.</p>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-magenta btn-lg" onclick="showToast('🎨 Studio launching soon — join the waitlist!')">Try Studio Free →</button>
+      </div>
+      <div class="studio-right">
+        <div class="studio-mockup">
+          <div class="mockup-titlebar">
+            <div class="titlebar-dot r"></div>
+            <div class="titlebar-dot y"></div>
+            <div class="titlebar-dot g"></div>
+            <div class="mockup-url">studio.frill.pk — Design Studio</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-tabs">
+              <div class="m-tab active">Design</div>
+              <div class="m-tab">Templates</div>
+              <div class="m-tab">Upload</div>
+              <div class="m-tab">Preview</div>
+            </div>
+            <div class="mockup-canvas">
+              <div class="canvas-grid"></div>
+              <div class="canvas-tshirt">👕</div>
+            </div>
+            <div class="mockup-tools">
+              <div class="m-tool">🔤 Text</div>
+              <div class="m-tool">🖼️ Image</div>
+              <div class="m-tool">🎨 Color</div>
+              <div class="m-tool">📏 Size</div>
+              <div class="m-tool">↩️ Undo</div>
+              <div class="m-tool">🔄 Flip</div>
+              <div class="m-tool">📐 Align</div>
+              <div class="m-tool">✨ Effects</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="product-card">
-        <div class="product-img">👔</div>
-        <div class="product-info">
-          <div class="product-name">Polo Shirts</div>
-          <div class="product-price">From PKR 1,299</div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section reviews-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Customer Reviews</div>
+        <h2 class="section-title">The <em>Frill</em> community speaks</h2>
+        <p class="section-sub">4.9 / 5 stars from 2,400+ verified purchases.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Ordered custom hoodies for our startup team. The print quality is absolutely insane — colours didn't fade even after 10 washes. Will be ordering again for our next event."</p>
+          <div class="review-author">
+            <div class="author-avatar">AH</div>
+            <div>
+              <div class="author-name">Ahmed Hassan</div>
+              <div class="author-sub">Startup founder, Lahore · Verified buyer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"The design studio is genuinely so easy. I uploaded my own artwork, placed a single-piece order, and it arrived in 4 days looking exactly like the preview. Frill is different — you can feel it."</p>
+          <div class="review-author">
+            <div class="author-avatar">SR</div>
+            <div>
+              <div class="author-name">Sara Raza</div>
+              <div class="author-sub">Graphic designer, Islamabad · Verified buyer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Ordered 50 jerseys for our university cricket team. Frill gave us a bulk discount, assigned an account manager, and every single jersey was perfect. This is not your average print shop."</p>
+          <div class="review-author">
+            <div class="author-avatar">MK</div>
+            <div>
+              <div class="author-name">M. Kamran</div>
+              <div class="author-sub">Sports coordinator, NUST · Verified buyer</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="product-card">
-        <div class="product-img">👜</div>
-        <div class="product-info">
-          <div class="product-name">Tote Bags</div>
-          <div class="product-price">From PKR 599</div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section style="background:var(--gray-50);padding:4rem 0;border-top:1px solid var(--border);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="eyebrow">Stay in the Loop</div>
+      <h2 class="section-title">Get design inspiration & <em>exclusive</em> offers</h2>
+      <p class="section-sub" style="margin:0 auto 2rem;">Join 8,000+ Frill subscribers. New templates, launch drops, and 10% off your first order.</p>
+      <div style="display:flex;gap:.75rem;max-width:420px;margin:0 auto;">
+        <input class="nl-input" type="email" placeholder="Enter your email" style="border:1.5px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.88rem;outline:none;flex:1;background:#fff;color:var(--gray-800);"/>
+        <button class="nl-btn btn" onclick="showToast('🎉 You\'re subscribed! Check your inbox.')">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ════════════════════════════════════
+     COLLECTION PAGE
+════════════════════════════════════ -->
+<div id="page-collection" class="page">
+  <div class="collection-hero">
+    <div style="max-width:var(--max-w);margin:0 auto;padding:0 2rem;">
+      <div class="collection-breadcrumb">Home <span>›</span> All Products</div>
+      <h1>All Products</h1>
+      <p>Every piece is fully customisable. Choose a base and make it yours.</p>
+    </div>
+  </div>
+  <div class="collection-layout">
+    <div class="collection-toolbar">
+      <div class="collection-count" id="collection-count">5 products</div>
+      <div class="toolbar-right">
+        <select class="sort-select">
+          <option>Sort by: Featured</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Best Selling</option>
+          <option>Newest</option>
+        </select>
+      </div>
+    </div>
+    <div class="collection-grid" id="collection-products">
+      <!-- Populated by js/app.js from js/products.js -->
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PRODUCT DETAIL PAGE
+════════════════════════════════════ -->
+<div id="page-product" class="page">
+  <div id="product-detail-content">
+    <!-- Populated dynamically by js/render.js -->
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     ABOUT PAGE
+════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <h1>Our Story</h1>
+    <p>Born in a dorm room. Built in Pakistan. Worn everywhere.</p>
+  </div>
+  <div class="about-story">
+    <div class="story-block">
+      <h3>🌱 Where It All Started</h3>
+      <p>Frill was born out of a simple frustration: custom clothing in Pakistan was either outrageously expensive, poor quality, or required a minimum of 100 pieces. As university students, we wanted to print 5 hoodies for our club event — and couldn't find a single local platform that made it possible. So we built one.</p>
+    </div>
+    <div class="story-block">
+      <h3>🏭 Why We Print In-House</h3>
+      <p>Every global print-on-demand platform outsources to third parties — which means longer delivery times, inconsistent quality, and zero control. At Frill, we invested in our own DTG and sublimation printers. That means every order that comes in goes directly to our production floor. Same-day printing. Colour-accurate output. Wash-resistant inks. This is the Frill difference.</p>
+    </div>
+    <div class="story-block">
+      <h3>🇵🇰 Proudly Pakistani</h3>
+      <p>Pakistan's textile sector exports $16 billion annually — yet Pakistani consumers have had no access to a world-class custom clothing platform. Frill changes that. We source premium blank garments from local mills, print locally, and deliver locally. Every rupee stays in the ecosystem.</p>
+    </div>
+    <div class="story-block">
+      <h3>🎯 Where We're Going</h3>
+      <p>We're not just building a print shop. Frill is the infrastructure for self-expression in South Asia — a platform where artists sell their designs, creators launch their merch, and brands customise their identity. The studio, the store, the manufacturing — it all points toward one vision: making creative self-expression accessible to everyone in Pakistan.</p>
+    </div>
+  </div>
+  <div class="about-values">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">What We Stand For</div>
+        <h2 class="section-title">Our <em>values</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎨</div>
+          <div class="value-title">Creative Freedom</div>
+          <p class="value-desc">No templates you're forced into. No designs you don't love. Full control, always.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⭐</div>
+          <div class="value-title">Print Quality First</div>
+          <p class="value-desc">We invest in the best equipment and inks so your print looks exactly like your vision.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌍</div>
+          <div class="value-title">Made in Pakistan</div>
+          <p class="value-desc">Local sourcing, local production, local delivery. Building an ecosystem, not just a business.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💚</div>
+          <div class="value-title">Sustainable Choices</div>
+          <p class="value-desc">On-demand printing means zero unsold inventory waste. We only produce what is ordered.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">Community Driven</div>
+          <p class="value-desc">Designer royalties, student ambassador discounts, creator programs — growth for everyone.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔒</div>
+          <div class="value-title">100% Satisfaction</div>
+          <p class="value-desc">If your print doesn't match the preview, we reprint it. No questions, no hassle.</p>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<section class="section" style="background:var(--cream);">
-  <div style="max-width:1200px;margin:0 auto;">
-    <div class="section-label">Why Frill?</div>
-    <h2 class="section-title">Built for Pakistan.<br>Built for You.</h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🎨</div>
-        <div class="why-title">Live Design Studio</div>
-        <p class="why-text">Browser-based canvas with Urdu font support, clipart, color controls, and real-time mockup preview. No design skills needed.</p>
+  <div class="about-team">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">The Team</div>
+        <h2 class="section-title">The people behind <em>Frill</em></h2>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🏭</div>
-        <div class="why-title">In-House Manufacturing</div>
-        <p class="why-text">We own our DTG & sublimation printers — no middlemen. Full quality control, 3–5 day turnaround guaranteed.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">📦</div>
-        <div class="why-title">Order 1 or 1000</div>
-        <p class="why-text">No minimum order quantity. Perfect for individuals, student clubs, startups, and large corporate orders alike.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💳</div>
-        <div class="why-title">Local Payments</div>
-        <p class="why-text">JazzCash, EasyPaisa, bank transfer, and Cash on Delivery — the most convenient options for Pakistani shoppers.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">HA</div>
+          <div class="team-name">Hashim Ali Khan</div>
+          <div class="team-role">Founder & CEO</div>
+          <p class="team-bio">BS Computer Science, COMSATS. Obsessed with building the custom clothing platform Pakistan deserves.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">ZA</div>
+          <div class="team-name">Zara Ahmed</div>
+          <div class="team-role">Head of Design & Studio</div>
+          <p class="team-bio">Graphic designer and textile enthusiast. Leads Frill's template library and design studio UX.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">MR</div>
+          <div class="team-name">M. Raza</div>
+          <div class="team-role">Head of Production</div>
+          <p class="team-bio">BTech Textile Engineering. Manages our in-house DTG printing operation and quality control.</p>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<footer>
-  <div class="logo">fr<span>i</span>ll</div>
-  <p>www.frill.pk &nbsp;|&nbsp; Islamabad, Pakistan</p>
-  <p style="margin-top:0.5rem;">Hashim Ali Khan &nbsp;|&nbsp; FA24-BSE-027 &nbsp;|&nbsp; E-Commerce & Digital Marketing</p>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="business.html">Business Plan</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <p style="margin-top:2rem;font-size:0.75rem;opacity:0.5;">© 2026 Frill. All rights reserved.</p>
+<!-- ════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="collection-hero">
+    <div style="max-width:var(--max-w);margin:0 auto;padding:0 2rem;">
+      <div class="collection-breadcrumb">Home <span>›</span> Contact</div>
+      <h1>Get In Touch</h1>
+      <p>Questions about your order, bulk pricing, or partnerships? We're here.</p>
+    </div>
+  </div>
+  <div class="contact-page">
+    <div class="contact-layout">
+      <div class="contact-form-wrap">
+        <div class="form-title">Send us a message</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="Ali"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="Khan"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="ali@example.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <select class="form-input sort-select" style="width:100%;border-radius:var(--radius);">
+            <option>Select a topic</option>
+            <option>Order enquiry</option>
+            <option>Bulk / corporate order</option>
+            <option>Design studio help</option>
+            <option>Partnerships & affiliates</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input form-textarea" placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="showToast('✅ Message sent! We\'ll reply within 24 hours.')">Send Message</button>
+      </div>
+      <div class="contact-info-col">
+        <div class="contact-info-title">Contact Information</div>
+        <div class="contact-info-items">
+          <div class="ci-item">
+            <div class="ci-icon">📧</div>
+            <div><div class="ci-label">Email</div><div class="ci-val">hello@frill.pk</div></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📱</div>
+            <div><div class="ci-label">WhatsApp</div><div class="ci-val">+92 300 FRILL01</div></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div><div class="ci-label">Studio Address</div><div class="ci-val">Block D, Blue Area, Islamabad, Pakistan</div></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🕐</div>
+            <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon–Sat, 9 AM – 7 PM PKT</div></div>
+          </div>
+        </div>
+        <div style="background:var(--gray-50);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;">
+          <div style="font-family:var(--font-head);font-size:.82rem;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;">Bulk Order Enquiry</div>
+          <p style="font-size:.82rem;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Need 20+ pieces for your team, event, or brand? Get dedicated account management, tiered pricing, and priority production.</p>
+          <button class="btn btn-magenta btn-sm btn-full" onclick="showToast('📋 A bulk order specialist will contact you within 2 hours.')">Request Bulk Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="faq-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="section-title">Common <em>questions</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">What's the minimum order quantity?</div>
+          <div class="faq-a">Just 1 piece! Frill accepts single-piece orders at no extra charge. This is one of our core USPs — no one else in Pakistan offers this with in-house production.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How long does delivery take?</div>
+          <div class="faq-a">3–5 business days nationwide. Islamabad orders can arrive in as little as 2 days. You'll receive a tracking link via SMS and email once dispatched.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What print methods do you use?</div>
+          <div class="faq-a">We use Direct-to-Garment (DTG) for cotton garments and dye-sublimation for polyester. Both methods produce vibrant, wash-resistant prints that last hundreds of washes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I upload my own artwork?</div>
+          <div class="faq-a">Absolutely. Upload PNG, SVG, or JPEG files through the design studio. We recommend 300 DPI or higher for the sharpest print output. Our system processes your file automatically.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you accept Cash on Delivery?</div>
+          <div class="faq-a">Yes! We accept COD nationwide, plus JazzCash, Easypaisa, bank transfer, and all major credit/debit cards through our secure payment gateway.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" onclick="showPage('home')">
+          <div class="logo-text">fr<em>i</em>ll</div>
+          <div class="logo-tagline">Wear Your Imagination</div>
+        </div>
+        <p>Pakistan's first integrated custom clothing studio. Design it, print it, wear it — from Islamabad to everywhere.</p>
+        <div class="footer-social">
+          <div class="social-btn" onclick="showToast('📸 Follow us @frill.pk on Instagram!')">📸</div>
+          <div class="social-btn" onclick="showToast('🎵 Find us on TikTok @frill.pk!')">🎵</div>
+          <div class="social-btn" onclick="showToast('💼 Connect on LinkedIn!')">💼</div>
+          <div class="social-btn" onclick="showToast('💬 Chat on WhatsApp!')">💬</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('collection')">All Products</a></li>
+          <li><a onclick="showToast('🎨 Studio launching soon!')">Design Studio</a></li>
+          <li><a onclick="showPage('about')">Our Story</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul class="footer-links">
+          <li><a onclick="showToast('📏 Size chart coming!')">Size Chart</a></li>
+          <li><a onclick="showToast('🚚 Shipping info coming!')">Shipping Policy</a></li>
+          <li><a onclick="showToast('↩️ Returns info coming!')">Return Policy</a></li>
+          <li><a onclick="showPage('contact')">FAQ</a></li>
+          <li><a onclick="showPage('contact')">Track My Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>New templates, drops, and exclusive discounts — straight to your inbox.</p>
+        <div class="nl-form">
+          <input class="nl-input" type="email" placeholder="Your email"/>
+          <button class="nl-btn" onclick="showToast('🎉 Subscribed!')">Go</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Frill ,Powered By Shopify</span>
+      <div class="footer-payments">
+        <span class="payment-icon">JazzCash</span>
+        <span class="payment-icon">Easypaisa</span>
+        <span class="payment-icon">COD</span>
+        <span class="payment-icon">VISA</span>
+        <span class="payment-icon">MC</span>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span id="toast-msg">Added to cart!</span></div>
+
+<!-- JS Modules (order matters: data → utilities → rendering → init) -->
+<script src="js/products.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>

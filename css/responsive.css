@@ -1,0 +1,20 @@
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .header-inner { padding: 0 1.25rem; }
+  .main-nav { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { display: none; }
+  .hero-left { padding: 3rem 1.5rem; }
+  .product-grid, .collection-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .studio-inner { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .product-layout { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .values-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+  .section-inner { padding: 0 1.25rem; }
+  .collection-layout { padding: 0 1.25rem; }
+}

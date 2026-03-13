@@ -1,58 +1,45 @@
-/* ========================================
-   FRILL-UI: CSS VARIABLES & RESET
-   ======================================== */
-
+/* ═══════════════════════════════════════
+   CSS VARIABLES & RESET
+═══════════════════════════════════════ */
 :root {
-  /* Colors */
   --purple: #3B1F5E;
-  --purple-light: #5a3087;
+  --purple-mid: #5A3087;
+  --purple-light: #7C4BAD;
   --magenta: #C2185B;
-  --magenta-light: #e91e8c;
-  --cream: #FAF7FF;
-  --white: #ffffff;
-  --text-muted: #a78bcb;
-  --text-dark: #4a3060;
-  --text-lighter: #6b5080;
-
-  /* Typography */
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
-
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
-
-  /* Border Radius */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-  --radius-full: 50px;
-
-  /* Transitions */
-  --transition-fast: 0.2s;
-  --transition-base: 0.3s;
-  --transition-slow: 0.8s;
+  --magenta-hot: #E91E8C;
+  --cream: #FAF9FC;
+  --white: #FFFFFF;
+  --gray-50: #F8F8FA;
+  --gray-100: #F1EEF7;
+  --gray-200: #E2DBF0;
+  --gray-400: #9E8FBB;
+  --gray-600: #5D5070;
+  --gray-800: #2D1F45;
+  --border: #E5DEF2;
+  --shadow-sm: 0 1px 3px rgba(59,31,94,.08), 0 1px 2px rgba(59,31,94,.06);
+  --shadow-md: 0 4px 16px rgba(59,31,94,.12), 0 2px 6px rgba(59,31,94,.08);
+  --shadow-lg: 0 10px 40px rgba(59,31,94,.15), 0 4px 12px rgba(59,31,94,.1);
+  --shadow-xl: 0 20px 60px rgba(59,31,94,.2);
+  --font-head: 'Montserrat', sans-serif;
+  --font-serif: 'Lora', serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --ease: cubic-bezier(.4,0,.2,1);
+  --max-w: 1200px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--purple);
+  background: var(--white);
+  color: var(--gray-800);
   overflow-x: hidden;
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-
-html {
-  scroll-behavior: smooth;
-}
+img { display: block; max-width: 100%; height: auto; object-fit: cover; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+::selection { background: var(--magenta); color: #fff; }
